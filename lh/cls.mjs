@@ -1,0 +1,11 @@
+import puppeteer from '/home/box/.npm/_npx/0f94ee7615faf582/node_modules/puppeteer-core/lib/puppeteer/puppeteer-core.js';
+const url = process.argv[2] || 'http://localhost:4173/';
+const b = await puppeteer.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox'] });
+const p = await b.newPage(); await p.setViewport({ width: 412, height: 823, deviceScaleFactor: 1.75, isMobile: true });
+await p.evaluateOnNewDocument(() => { window.__ls = []; new PerformanceObserver(l => { for (const e of l.getEntries()) window.__ls.push({ v: e.value, t: Math.round(e.startTime), src: e.sources.map(s => (s.node && (s.node.id || s.node.className || s.node.nodeName)) + ' ' + JSON.stringify(s.previousRect) + '->' + JSON.stringify(s.currentRect)) }); }).observe({ type: 'layout-shift', buffered: true }); });
+await p.goto(url, { waitUntil: 'networkidle0' });
+await new Promise(r => setTimeout(r, 1000));
+console.log(JSON.stringify(await p.evaluate(() => window.__ls), null, 1));
+await p.screenshot({ path: '/workspace/lh/after-js.png' });
+console.log('dk visible:', await p.evaluate(() => { const b = [...document.querySelectorAll('.row button')].find(x => /know/.test(x.textContent)); return b && getComputedStyle(b).display + ' hidden=' + b.hidden; }));
+await b.close();

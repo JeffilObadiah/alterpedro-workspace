@@ -1,0 +1,470 @@
+{
+  "$schema": "ALTER Software Technologies — Component Specs v1.1",
+  "meta": {
+    "brand": "ALTER",
+    "version": "1.1.0",
+    "created": "2026-10-02",
+    "updated": "2026-10-02",
+    "dependsOn": "tokens.json v2.1.0",
+    "informedBy": "godaddy-v132 extraction (structural patterns only: icon-tile geometry, button state ladder, card hairline+border, modal focus trap, toast motion)",
+    "rule": "Design values (colors, spacing, radius, motion, typography) MUST be fully-qualified token references — no exceptions. Structural constants (modal max-widths, toast auto-dismiss timers, viewport math) MAY be literals and are marked with \"_literal\": true. Every token path must resolve against tokens.json.",
+    "pathConvention": "Fully-qualified. `color.neutral.900`, not `neutral.900`. `spacing.scale.md`, not `spacing.md`. `color.border.default` for the color; `border.width.hairline` for the width. If a reference isn't a resolvable path from tokens.json root, it's a bug.",
+    "covers": ["button", "input", "card", "modal", "toast"]
+  },
+
+  "button": {
+    "_comment": "Primary CTA is INK, not accent. Accent is secondary emphasis. Danger is destructive-only. Icon tile is 40x40 with 8px radius (extracted geometry). Every size has a hitArea — the visual size may be smaller than the touch target.",
+    "variants": {
+      "primary": {
+        "_comment": "Default CTA. Use one per view.",
+        "bg":     "color.neutral.900",
+        "text":   "color.text.onInk",
+        "border": "transparent",
+        "states": {
+          "hover":    { "bg": "color.neutral.800" },
+          "active":   { "bg": "color.neutral.700" },
+          "focus":    { "ring": "color.focusRing" },
+          "disabled": { "bg": "color.neutral.100", "text": "color.text.disabled", "border": "color.border.default" },
+          "loading":  { "bg": "color.neutral.900", "text": "color.text.onInk", "_note": "spinner centered, label kept for width reservation" }
+        }
+      },
+      "accent": {
+        "_comment": "Use sparingly — max one per view alongside a primary button.",
+        "bg":     "color.accent.fill",
+        "text":   "color.text.onAccent",
+        "border": "transparent",
+        "states": {
+          "hover":    { "bg": "color.accent.fillHover" },
+          "active":   { "bg": "color.accent.deep" },
+          "focus":    { "ring": "color.focusRing" },
+          "disabled": { "bg": "color.neutral.100", "text": "color.text.disabled" }
+        }
+      },
+      "ghost": {
+        "_comment": "Tertiary. Cancel, Back, secondary actions.",
+        "bg":     "transparent",
+        "text":   "color.text.primary",
+        "border": "color.border.default",
+        "states": {
+          "hover":    { "bg": "color.neutral.50",  "border": "color.border.strong" },
+          "active":   { "bg": "color.neutral.100" },
+          "focus":    { "ring": "color.focusRing" },
+          "disabled": { "bg": "transparent", "text": "color.text.disabled", "border": "color.border.default" }
+        }
+      },
+      "danger": {
+        "_comment": "Destructive only (void bill, remove line confirm, revoke). Never for warning states.",
+        "bg":     "color.semantic.danger.fill",
+        "text":   "color.text.onAccent",
+        "border": "transparent",
+        "states": {
+          "hover":    { "bg": "color.semantic.danger.fillHover" },
+          "active":   { "bg": "color.semantic.danger.fillActive" },
+          "focus":    { "ring": "color.focusRing" },
+          "disabled": { "bg": "color.neutral.100", "text": "color.text.disabled" }
+        }
+      },
+      "link": {
+        "_comment": "Text-only. No fill, no border. Underline appears on hover.",
+        "bg":     "transparent",
+        "text":   "color.accent.text",
+        "border": "transparent",
+        "states": {
+          "hover":    { "text": "color.accent.fillHover", "underline": true },
+          "active":   { "text": "color.accent.deep" },
+          "focus":    { "ring": "color.focusRing" },
+          "disabled": { "text": "color.text.disabled" }
+        }
+      }
+    },
+
+    "sizes": {
+      "sm": {
+        "height":     "32px",
+        "hitArea":    "44px",
+        "_note":      "visual height 32px; touch target extended to 44px via padding-block on the wrapper or ::before pseudo-element",
+        "paddingX":   "spacing.scale.sm",
+        "paddingY":   "spacing.scale.xs",
+        "fontSize":   "typography.scale.small.size",
+        "fontWeight": "typography.weight.medium",
+        "gap":        "spacing.scale.xs",
+        "iconSize":   "14px",
+        "radius":     "radius.md"
+      },
+      "md": {
+        "height":     "density.comfortable.controlHeight",
+        "hitArea":    "44px",
+        "_note":      "controlHeight is 40px; hit target extended to 44px via padding-block",
+        "paddingX":   "spacing.scale.md",
+        "paddingY":   "spacing.scale.sm",
+        "fontSize":   "typography.scale.body.size",
+        "fontWeight": "typography.weight.medium",
+        "gap":        "spacing.scale.sm",
+        "iconSize":   "16px",
+        "radius":     "radius.md"
+      },
+      "lg": {
+        "height":     "48px",
+        "hitArea":    "48px",
+        "_note":      "already meets 44px minimum; no extension needed",
+        "paddingX":   "spacing.scale.lg",
+        "paddingY":   "spacing.scale.md",
+        "fontSize":   "typography.scale.subhead.size",
+        "fontWeight": "typography.weight.medium",
+        "gap":        "spacing.scale.sm",
+        "iconSize":   "18px",
+        "radius":     "radius.md"
+      },
+      "icon": {
+        "_comment": "Square icon-only button. 40x40 with 8px radius — extracted from GoDaddy icon tiles.",
+        "height":   "40px",
+        "width":    "40px",
+        "hitArea":  "44px",
+        "padding":  "spacing.scale.sm",
+        "radius":   "radius.lg",
+        "iconSize": "18px"
+      }
+    },
+
+    "slots": {
+      "leading":  { "_note": "Icon or spinner. Absolute left, inset by paddingX." },
+      "label":    { "_note": "Text. Never truncate — buttons wrap or grow, never ellipsis." },
+      "trailing": { "_note": "Chevron or shortcut hint. Absolute right, inset by paddingX." }
+    },
+
+    "motion": {
+      "properties": "background-color, border-color, transform, opacity",
+      "duration":   "motion.duration.fast",
+      "easing":     "motion.easing.out",
+      "press":      { "_note": "Active state scales to 0.98. Restores on release. No bounce." }
+    },
+
+    "a11y": {
+      "role":             "button",
+      "keyboard":         ["Enter", "Space"],
+      "minTouchTarget":   "44px",
+      "focusVisibleOnly": true,
+      "disabled":         "_note: use aria-disabled + prevent click, not the disabled attribute, when you need tooltip on hover"
+    }
+  },
+
+  "input": {
+    "_comment": "Every input has label above (never placeholder-only). Help text below. Error text below in color.semantic.danger.text. All states explicit. Size sm/md/lg mirror button.",
+    "variants": {
+      "default": {
+        "bg":          "color.surface.card",
+        "border":      "color.border.default",
+        "text":        "color.text.primary",
+        "placeholder": "color.text.muted",
+        "radius":      "radius.md",
+        "states": {
+          "hover":    { "border": "color.border.strong" },
+          "focus":    { "border": "color.accent.fill", "ring": "color.focusRing" },
+          "disabled": { "bg": "color.neutral.50", "text": "color.text.disabled", "border": "color.border.default" },
+          "error":    { "border": "color.semantic.danger.fill", "text": "color.semantic.danger.text" },
+          "readonly": { "bg": "color.neutral.50" }
+        }
+      },
+      "textarea": {
+        "_comment": "Same as default, min-height 4 rows, resize vertical only.",
+        "bg":        "color.surface.card",
+        "border":    "color.border.default",
+        "radius":    "radius.md",
+        "minHeight": "96px",
+        "resize":    "vertical"
+      }
+    },
+
+    "sizes": {
+      "sm": {
+        "height":   "32px",
+        "hitArea":  "44px",
+        "paddingX": "spacing.scale.sm",
+        "paddingY": "spacing.scale.xs",
+        "fontSize": "typography.scale.small.size",
+        "radius":   "radius.sm"
+      },
+      "md": {
+        "height":   "density.comfortable.controlHeight",
+        "hitArea":  "44px",
+        "paddingX": "spacing.scale.md",
+        "paddingY": "spacing.scale.sm",
+        "fontSize": "typography.scale.body.size",
+        "radius":   "radius.md"
+      },
+      "lg": {
+        "height":   "48px",
+        "hitArea":  "48px",
+        "paddingX": "spacing.scale.lg",
+        "paddingY": "spacing.scale.md",
+        "fontSize": "typography.scale.subhead.size",
+        "radius":   "radius.md"
+      }
+    },
+
+    "slots": {
+      "label":        { "_note": "Above input. typography.scale.small, weight medium, color.text.primary. Required." },
+      "leadingIcon":  { "_note": "Absolute left, inset by paddingX, color.text.muted, 16px." },
+      "prefix":       { "_note": "Text before value (e.g. currency symbol). color.text.muted, tabular numerals." },
+      "value":        { "_note": "The input itself. featureSettings from typography.numeric when type is number/currency." },
+      "suffix":       { "_note": "Text after value (e.g. unit). color.text.muted, tabular numerals." },
+      "trailingIcon": { "_note": "Absolute right. For clear, reveal password, calendar. Never both leading and trailing icons on same input." },
+      "helpText":     { "_note": "Below input. typography.scale.small, color.text.muted. Shown when no error." },
+      "errorText":    { "_note": "Below input. typography.scale.small, color.semantic.danger.text. Replaces helpText when error present." }
+    },
+
+    "motion": {
+      "properties": "border-color, box-shadow",
+      "duration":   "motion.duration.fast",
+      "easing":     "motion.easing.out"
+    },
+
+    "a11y": {
+      "labelBinding":    "_note: label htmlFor must match input id. Never placeholder-as-label.",
+      "ariaInvalid":     "_note: set aria-invalid=true when error present",
+      "ariaDescribedBy": "_note: link input to helpText or errorText id via aria-describedby",
+      "autoComplete":    "_note: always set. name, email, tel, address-line1, cc-number, one-time-code."
+    }
+  },
+
+  "card": {
+    "_comment": "Default card has a hairline border, no shadow. Shadow is only for interactive cards on hover, or elevated cards that actually float. Never both border and shadow on the same card.",
+    "variants": {
+      "bordered": {
+        "_comment": "Default. Static content.",
+        "bg":     "color.surface.card",
+        "border": "border.width.hairline solid color.border.default",
+        "radius": "radius.lg",
+        "shadow": "none"
+      },
+      "interactive": {
+        "_comment": "Clickable card. Same border, adds hover lift + shadow.",
+        "bg":     "color.surface.card",
+        "border": "border.width.hairline solid color.border.default",
+        "radius": "radius.lg",
+        "states": {
+          "hover": { "border": "color.border.strong", "shadow": "shadow.sm" },
+          "focus": { "ring": "color.focusRing" }
+        },
+        "motion": {
+          "properties": "border-color, box-shadow",
+          "duration":   "motion.duration.fast",
+          "easing":     "motion.easing.out"
+        }
+      },
+      "elevated": {
+        "_comment": "No border, shadow only. Use for floating panels, modals, dropdowns — not for stacked content.",
+        "bg":     "color.surface.card",
+        "border": "transparent",
+        "radius": "radius.lg",
+        "shadow": "shadow.md"
+      }
+    },
+
+    "sizes": {
+      "sm": {
+        "paddingX": "spacing.scale.md",
+        "paddingY": "spacing.scale.md",
+        "gap":      "spacing.scale.sm"
+      },
+      "md": {
+        "paddingX": "spacing.scale.lg",
+        "paddingY": "spacing.scale.lg",
+        "gap":      "spacing.scale.md"
+      },
+      "lg": {
+        "paddingX": "spacing.scale.xl",
+        "paddingY": "spacing.scale.xl",
+        "gap":      "spacing.scale.lg"
+      }
+    },
+
+    "slots": {
+      "media":    { "_note": "Optional. Image/visual at top of card. object-fit: cover. Radius top corners inherit from card." },
+      "eyebrow":  { "_note": "Optional. typography.scale.eyebrow, color.text.muted, above title." },
+      "title":    { "_note": "typography.scale.heading on md/lg, subhead on sm. color.text.primary." },
+      "subtitle": { "_note": "Optional. typography.scale.small, color.text.secondary." },
+      "actions":  { "_note": "Top-right icon buttons or text link. Never more than 2." },
+      "body":     { "_note": "Main content. typography.scale.body, color.text.secondary." },
+      "footer":   { "_note": "Below body. Separated by border-top hairline color.border.default when present." }
+    },
+
+    "a11y": {
+      "interactive": "_note: when clickable, wrap in <a> or <button>. Do not use onClick on a div.",
+      "focusWithin": "_note: if card contains focusable elements, do not make card itself focusable — let tab order flow to children."
+    }
+  },
+
+  "modal": {
+    "_comment": "Modal = scrim + container. Scrim uses opacity.scrim. Container never exceeds viewport minus 32px on each side. Traps focus, closes on Escape, restores focus to trigger on close.",
+    "sizes": {
+      "sm": {
+        "maxWidth": "400px",
+        "_literal": true,
+        "_use":     "confirmations, single-field prompts"
+      },
+      "md": {
+        "maxWidth": "560px",
+        "_literal": true,
+        "_use":     "default. forms, detail views, most dialogs"
+      },
+      "lg": {
+        "maxWidth": "720px",
+        "_literal": true,
+        "_use":     "multi-column forms, tables"
+      },
+      "xl": {
+        "maxWidth": "960px",
+        "_literal": true,
+        "_use":     "complex flows, wizard steps"
+      },
+      "fullscreen": {
+        "maxWidth":  "calc(100vw - 32px)",
+        "maxHeight": "calc(100vh - 32px)",
+        "_literal":  true,
+        "_use":      "receipt preview, printer setup, terminal-style views"
+      }
+    },
+
+    "anatomy": {
+      "scrim": {
+        "bg":       "rgba(0, 0, 0, opacity.scrim)",
+        "backdrop": "blur.subtle",
+        "motion":   { "duration": "motion.duration.fast", "easing": "motion.easing.out" }
+      },
+      "container": {
+        "bg":     "color.surface.overlay",
+        "radius": "radius.xl",
+        "shadow": "shadow.md",
+        "border": "border.width.hairline solid color.border.default",
+        "motion": {
+          "enter": "motion.patterns.fadeUp",
+          "exit":  "motion.patterns.toastOut",
+          "_note": "entrance uses fadeUp (translateY + opacity), exit reverses"
+        }
+      },
+      "header": {
+        "paddingX":     "spacing.scale.xl",
+        "paddingY":     "spacing.scale.lg",
+        "borderBottom": "border.width.hairline solid color.border.default",
+        "_note":        "border-bottom only when body scrolls. Otherwise no divider."
+      },
+      "body": {
+        "paddingX":  "spacing.scale.xl",
+        "paddingY":  "spacing.scale.xl",
+        "maxHeight": "60vh",
+        "_literal":  true,
+        "overflowY": "auto"
+      },
+      "footer": {
+        "paddingX":  "spacing.scale.xl",
+        "paddingY":  "spacing.scale.lg",
+        "borderTop": "border.width.hairline solid color.border.default",
+        "layout":    "flex, justify-content: flex-end, gap: spacing.scale.sm",
+        "_note":     "primary action always rightmost. cancel always left of primary."
+      }
+    },
+
+    "slots": {
+      "title":       { "_note": "typography.scale.subhead, weight semibold, color.text.primary." },
+      "description": { "_note": "Optional. typography.scale.small, color.text.secondary, below title." },
+      "closeButton": { "_note": "Top-right. Icon-only ghost button. 40x40 icon tile." },
+      "footer":      { "_note": "Buttons only. Never more than 2. Never put text links in footer." }
+    },
+
+    "behaviors": {
+      "closeOnScrimClick":            true,
+      "closeOnEscape":                true,
+      "trapFocus":                    true,
+      "restoreFocusOnClose":          true,
+      "lockBodyScroll":               true,
+      "preventBackgroundInteraction": true
+    },
+
+    "a11y": {
+      "role":           "dialog",
+      "ariaModal":      true,
+      "ariaLabelledBy": "_note: id of title element",
+      "initialFocus":   "_note: focus the least destructive element. For confirm dialogs, focus Cancel, not the destructive action."
+    }
+  },
+
+  "toast": {
+    "_comment": "Bottom-right on desktop, top-center on mobile. Auto-dismiss 4s for non-error, 8s for error. Error toasts never auto-dismiss if they contain an action.",
+    "variants": {
+      "success": {
+        "bg":          "color.surface.overlay",
+        "border":      "border.width.hairline solid color.border.default",
+        "accent":      "color.semantic.success.text",
+        "icon":        "check-circle",
+        "autoDismiss": "4000ms",
+        "_literal":    true
+      },
+      "error": {
+        "bg":          "color.surface.overlay",
+        "border":      "border.width.hairline solid color.semantic.danger.fill",
+        "accent":      "color.semantic.danger.text",
+        "icon":        "alert-circle",
+        "autoDismiss": "8000ms",
+        "_literal":    true,
+        "_note":       "if toast has an action button, do not auto-dismiss. User must dismiss."
+      },
+      "warning": {
+        "bg":          "color.surface.overlay",
+        "border":      "border.width.hairline solid color.semantic.warning.fill",
+        "accent":      "color.semantic.warning.text",
+        "icon":        "alert-triangle",
+        "autoDismiss": "6000ms",
+        "_literal":    true
+      },
+      "info": {
+        "bg":          "color.surface.overlay",
+        "border":      "border.width.hairline solid color.border.default",
+        "accent":      "color.semantic.info.text",
+        "icon":        "info-circle",
+        "autoDismiss": "4000ms",
+        "_literal":    true
+      }
+    },
+
+    "positions": {
+      "desktop": "bottom-right",
+      "mobile":  "top-center"
+    },
+
+    "anatomy": {
+      "container": {
+        "minWidth": "320px",
+        "maxWidth": "400px",
+        "_literal": true,
+        "paddingX": "spacing.scale.lg",
+        "paddingY": "spacing.scale.md",
+        "gap":      "spacing.scale.md",
+        "radius":   "radius.lg",
+        "shadow":   "shadow.layered.md",
+        "border":   "border.width.hairline solid color.border.default",
+        "motion": {
+          "enter": "motion.patterns.toastIn",
+          "exit":  "motion.patterns.toastOut"
+        }
+      },
+      "stacking": {
+        "_note": "Stack multiple toasts with spacing.scale.sm gap. Newest on top (desktop bottom-right) or bottom (mobile top-center). Max 3 visible; overflow goes to a queue."
+      }
+    },
+
+    "slots": {
+      "icon":    { "_note": "20px. Colored by variant.accent." },
+      "title":   { "_note": "typography.scale.small, weight medium, color.text.primary. Optional." },
+      "message": { "_note": "typography.scale.small, color.text.secondary. Required. Max 2 lines, then truncate." },
+      "action":  { "_note": "Optional text link. color.accent.text. Max 1." },
+      "close":   { "_note": "Top-right. Icon-only ghost button, 24x24." }
+    },
+
+    "a11y": {
+      "role":     "status",
+      "ariaLive": "_note: use aria-live=polite for success/info. aria-live=assertive for error/warning.",
+      "pausable": "_note: pause auto-dismiss timer on hover and on focus"
+    }
+  }
+}

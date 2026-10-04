@@ -1,0 +1,213 @@
+{
+ "title": "Vu Agency | Custom Software, Built to Order",
+ "h1s": [
+  {
+   "t": "We build the software your business is missing.",
+   "v": true,
+   "top": 80
+  }
+ ],
+ "h2s": [
+  {
+   "t": "What happens after you send your requirement.",
+   "v": true,
+   "top": 829
+  },
+  {
+   "t": "What goes into each build.",
+   "v": false,
+   "top": 2407
+  },
+  {
+   "t": "Software we've built is running work every day.",
+   "v": false,
+   "top": 3489
+  },
+  {
+   "t": "Tell us what you need.",
+   "v": false,
+   "top": 4528
+  },
+  {
+   "t": "Optional cookies",
+   "v": true,
+   "top": 690
+  }
+ ],
+ "ctas": [
+  {
+   "tag": "A",
+   "t": "HOME",
+   "href": "https://vu.co.uk/",
+   "top": 31,
+   "left": 438
+  },
+  {
+   "tag": "A",
+   "t": "SERVICES",
+   "href": "https://vu.co.uk/services",
+   "top": 31,
+   "left": 526
+  },
+  {
+   "tag": "A",
+   "t": "ABOUT",
+   "href": "https://vu.co.uk/about",
+   "top": 31,
+   "left": 644
+  },
+  {
+   "tag": "A",
+   "t": "OUR WORK",
+   "href": "https://vu.co.uk/our-work",
+   "top": 31,
+   "left": 739
+  },
+  {
+   "tag": "A",
+   "t": "BLOG",
+   "href": "https://vu.co.uk/blog",
+   "top": 31,
+   "left": 857
+  },
+  {
+   "tag": "A",
+   "t": "SEND YOUR REQUIREMENT",
+   "href": "https://vu.co.uk/#requirement",
+   "top": 27,
+   "left": 1160
+  },
+  {
+   "tag": "A",
+   "t": "SEND YOUR REQUIREMENT",
+   "href": "https://vu.co.uk/#requirement",
+   "top": 477,
+   "left": 128
+  },
+  {
+   "tag": "A",
+   "t": "HOW IT WORKS",
+   "href": "https://vu.co.uk/#how",
+   "top": 477,
+   "left": 400
+  },
+  {
+   "tag": "A",
+   "t": "SEE OUR WORK",
+   "href": "https://vu.co.uk/our-work",
+   "top": 575,
+   "left": 551
+  },
+  {
+   "tag": "A",
+   "t": "MESSAGE US ON WHATSAPP",
+   "href": "https://wa.me/447792940327",
+   "top": 838,
+   "left": 1209
+  },
+  {
+   "tag": "BUTTON",
+   "t": "ALLOW OPTIONAL COOKIES",
+   "href": "",
+   "top": 814,
+   "left": 861
+  },
+  {
+   "tag": "BUTTON",
+   "t": "ESSENTIAL ONLY",
+   "href": "",
+   "top": 814,
+   "left": 1056
+  },
+  {
+   "tag": "A",
+   "t": "READ THE POLICY",
+   "href": "https://vu.co.uk/privacy-policy#cookies",
+   "top": 814,
+   "left": 1201
+  }
+ ],
+ "ps": [
+  {
+   "t": "We build software, filling gaps between tools that your team already use, with the saving and running costs assessed before the build.",
+   "top": 331
+  },
+  {
+   "t": "We handle the build, security and ongoing maintenance.",
+   "top": 427
+  },
+  {
+   "t": "50+ businesses run work through software we've built",
+   "top": 641
+  },
+  {
+   "t": "What happens after you send your requirement.",
+   "top": 829
+  },
+  {
+   "t": "Zoe Hubert · Olton Bedrooms",
+   "top": 834
+  },
+  {
+   "t": "Illustrative workflow",
+   "top": 892
+  },
+  {
+   "t": "Optional cookies",
+   "top": 690
+  },
+  {
+   "t": "Google Analytics helps us understand site use. Meta and LinkedIn tags measure responses to our advertising. We only load these tags and set campaign cookies if you choose Allow Optional Cookies.",
+   "top": 726
+  }
+ ],
+ "vids": [],
+ "iframes": [],
+ "imgs": [
+  {
+   "alt": "",
+   "src": "https://vu.co.uk/images/logoicon.svg",
+   "top": 35
+  },
+  {
+   "alt": "Vu Agency",
+   "src": "https://vu.co.uk/images/logotext.svg",
+   "top": 42
+  },
+  {
+   "alt": "Solihull Awards Winner",
+   "src": "ign/use-badge-solihull-awards-winner-2025-h1050px-w822px.jpg",
+   "top": 575
+  },
+  {
+   "alt": "Ben Breen",
+   "src": "https://vu.co.uk/images/our-work/ben-breen.webp",
+   "top": 633
+  },
+  {
+   "alt": "Sara Bremner",
+   "src": "https://vu.co.uk/images/our-work/sara-bremner.webp",
+   "top": 633
+  },
+  {
+   "alt": "Jo Salmon",
+   "src": "https://vu.co.uk/images/our-work/jo-salmon.webp",
+   "top": 633
+  },
+  {
+   "alt": "Zoe Hubert",
+   "src": "https://vu.co.uk/images/our-work/zoe-hubert.jpg",
+   "top": 829
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 848
+  }
+ ],
+ "bodyHeight": 5801,
+ "forms": [],
+ "status": 200,
+ "url": "https://www.vu.co.uk/",
+ "vp": "desktop"
+}

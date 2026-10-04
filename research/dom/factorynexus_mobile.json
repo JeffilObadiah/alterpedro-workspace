@@ -1,0 +1,149 @@
+{
+ "title": "Factory Nexus — Parallel AI Coding Agents That Ship Reviewed Code",
+ "h1s": [
+  {
+   "t": "Describe a feature. Watch your AI team ship it.",
+   "v": true,
+   "top": 121
+  }
+ ],
+ "h2s": [
+  {
+   "t": "How it works",
+   "v": false,
+   "top": 900
+  },
+  {
+   "t": "Not another AI autocomplete",
+   "v": false,
+   "top": 1688
+  },
+  {
+   "t": "Built with Factory",
+   "v": false,
+   "top": 2589
+  },
+  {
+   "t": "Simple pricing",
+   "v": false,
+   "top": 2865
+  },
+  {
+   "t": "Parallel AI coding agents: common questions",
+   "v": false,
+   "top": 3845
+  },
+  {
+   "t": "Stop coding alone",
+   "v": false,
+   "top": 5257
+  }
+ ],
+ "ctas": [
+  {
+   "tag": "A",
+   "t": "Sign in",
+   "href": "https://factory-nexus.ai/login",
+   "top": 18,
+   "left": 221
+  },
+  {
+   "tag": "A",
+   "t": "Get Started",
+   "href": "https://factory-nexus.ai/register",
+   "top": 12,
+   "left": 274
+  },
+  {
+   "tag": "BUTTON",
+   "t": "A React dashboard for tracking tasks",
+   "href": "",
+   "top": 488,
+   "left": 63
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Go CLI to parse and validate config files",
+   "href": "",
+   "top": 528,
+   "left": 53
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Python Flask API for a recipe app",
+   "href": "",
+   "top": 568,
+   "left": 75
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Rust CLI to batch resize images",
+   "href": "",
+   "top": 608,
+   "left": 81
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Full-stack blog with authentication",
+   "href": "",
+   "top": 648,
+   "left": 70
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Or watch a live demo →",
+   "href": "",
+   "top": 704,
+   "left": 16
+  },
+  {
+   "tag": "A",
+   "t": "Estimate an idea →",
+   "href": "https://factory-nexus.ai/estimate",
+   "top": 704,
+   "left": 164
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Connect a Repo →",
+   "href": "",
+   "top": 704,
+   "left": 292
+  }
+ ],
+ "ps": [
+  {
+   "t": "Describe a feature. Watch your AI team ship it.",
+   "top": 121
+  },
+  {
+   "t": "Multiple agents work in parallel on isolated branches. Code reviewed automatically for architecture, security, and style. Ready to merge in minutes, not days.",
+   "top": 254
+  },
+  {
+   "t": "No signup required — try it right now",
+   "top": 756
+  }
+ ],
+ "vids": [],
+ "iframes": [],
+ "imgs": [
+  {
+   "alt": "Factory Nexus",
+   "src": "https://factory-nexus.ai/assets/logo-icon-C2aN6fjM.png",
+   "top": 14
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 432
+  }
+ ],
+ "bodyHeight": 6077,
+ "forms": [
+  "TEXTAREA:Describe what you want built..."
+ ],
+ "status": 200,
+ "url": "https://factory-nexus.ai/",
+ "vp": "mobile"
+}

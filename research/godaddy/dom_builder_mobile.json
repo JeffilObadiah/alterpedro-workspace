@@ -1,0 +1,277 @@
+{
+ "url": "https://www.godaddy.com/websites/website-builder",
+ "title": "Website Builder | Create a Free Website in Minutes - No Tech Skills - GoDaddy",
+ "lcp": [
+  {
+   "t": 3116,
+   "tag": "H2",
+   "cls": "ux-text headline-string multibrand-app d2 carousel-marquee__title pl-h16kvqqp ux",
+   "url": "",
+   "size": 51208,
+   "txt": "Describe your idea.\nCreate your website in minutes.",
+   "id": ""
+  }
+ ],
+ "h1s": [
+  {
+   "t": "GODADDY WEBSITE BUILDER",
+   "v": true,
+   "top": 148
+  }
+ ],
+ "h2s": [
+  {
+   "t": "Describe your idea. Create your website in minutes.",
+   "v": true,
+   "top": 189
+  },
+  {
+   "t": "Get a free domain with any paid Airo AI Builder plan",
+   "v": false,
+   "top": 1433
+  },
+  {
+   "t": "Affordable plans, astounding results",
+   "v": false,
+   "top": 1605
+  },
+  {
+   "t": "Included in all paid plans:",
+   "v": false,
+   "top": 4024
+  },
+  {
+   "t": "If your business needs it, Airo can build it (in minutes)",
+   "v": false,
+   "top": 4551
+  },
+  {
+   "t": "Go from prompt to full-stack website, no coding required",
+   "v": false,
+   "top": 5384
+  },
+  {
+   "t": "How to create a website",
+   "v": false,
+   "top": 6186
+  },
+  {
+   "t": "Building a powerful website has never been easier",
+   "v": false,
+   "top": 8225
+  },
+  {
+   "t": "Developer-grade control. Newbie-friendly Website Builder features.",
+   "v": false,
+   "top": 9102
+  },
+  {
+   "t": "Trusted by 20+ million customers around the world",
+   "v": false,
+   "top": 9817
+  }
+ ],
+ "ctas": [
+  {
+   "tag": "BUTTON",
+   "t": "Domains",
+   "href": "",
+   "top": 80,
+   "left": -374
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Websites",
+   "href": "",
+   "top": 124,
+   "left": -374
+  },
+  {
+   "tag": "A",
+   "t": "Email",
+   "href": "https://www.godaddy.com/email/professional-business-email",
+   "top": 168,
+   "left": -374
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Hosting",
+   "href": "",
+   "top": 212,
+   "left": -374
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Marketing",
+   "href": "",
+   "top": 256,
+   "left": -374
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Commerce",
+   "href": "",
+   "top": 300,
+   "left": -374
+  },
+  {
+   "tag": "A",
+   "t": "SSL Certificates",
+   "href": "https://www.godaddy.com/web-security/ssl-certificate",
+   "top": 344,
+   "left": -374
+  },
+  {
+   "tag": "A",
+   "t": "Airo AI Builder",
+   "href": "https://www.godaddy.com/airo/ai-builder",
+   "top": 388,
+   "left": -374
+  },
+  {
+   "tag": "A",
+   "t": "Pricing",
+   "href": "https://www.godaddy.com/pricing",
+   "top": 432,
+   "left": -374
+  },
+  {
+   "tag": "A",
+   "t": "Deals",
+   "href": "https://www.godaddy.com/great-deals",
+   "top": 13,
+   "left": 206
+  },
+  {
+   "tag": "A",
+   "t": "Start for Free",
+   "href": "https://www.godaddy.com/websites/website-builder#",
+   "top": 74,
+   "left": 242
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Redesign with a fresh look",
+   "href": "",
+   "top": 674,
+   "left": 16
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Build an online store",
+   "href": "",
+   "top": 674,
+   "left": 227
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Create a business directory",
+   "href": "",
+   "top": 674,
+   "left": 402
+  }
+ ],
+ "ps": [
+  {
+   "t": "Describe your idea. Create your website in minutes.",
+   "top": 189
+  },
+  {
+   "t": "With a few prompts GoDaddy Website Builder generates your website, web app, pages, databases and logic in minutes, no coding required. Start for free with 50 AI credits a month. No credit card required.",
+   "top": 359
+  }
+ ],
+ "vids": [
+  {
+   "vis": false,
+   "src": "",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "paused": true,
+   "top": 5528
+  },
+  {
+   "vis": false,
+   "src": "",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "paused": true,
+   "top": 9328
+  },
+  {
+   "vis": false,
+   "src": "",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "paused": true,
+   "top": 9328
+  }
+ ],
+ "lottie": 0,
+ "animatedCss": [
+  {
+   "tag": "DIV",
+   "cls": "animate pl-m14hrbja pl-cn1upg4 pl-a18osifv",
+   "anim": "animateIn-pl-a18osifv",
+   "dur": "1.2s"
+  },
+  {
+   "tag": "DIV",
+   "cls": "core-m16g5ys8",
+   "anim": "glowShift-core-m16g5ys8",
+   "dur": "5s"
+  },
+  {
+   "tag": "DIV",
+   "cls": "pl-c1x5sie2",
+   "anim": "carousel-card-float-pl-c1x5sie2",
+   "dur": "7.6s"
+  },
+  {
+   "tag": "DIV",
+   "cls": "pl-c1x5sie2",
+   "anim": "carousel-card-float-pl-c1x5sie2",
+   "dur": "9s"
+  },
+  {
+   "tag": "DIV",
+   "cls": "pl-c1x5sie2",
+   "anim": "carousel-card-float-pl-c1x5sie2",
+   "dur": "8.8s"
+  }
+ ],
+ "animations": 10,
+ "imgs": [
+  {
+   "alt": "AI Builder",
+   "src": "https://img1.wsimg.com/cdnassets/transform/2957ef71-a947-41f0-ac36-efe93b054e9f/AI_builder_example_WebApp",
+   "top": 829
+  },
+  {
+   "alt": "AI Builder",
+   "src": "https://img1.wsimg.com/cdnassets/transform/b913484d-d3dd-4824-a8db-c25a6f38cd1d/Example-Website",
+   "top": 740
+  },
+  {
+   "alt": "AI Builder",
+   "src": "https://img1.wsimg.com/cdnassets/transform/5b47488c-7e19-4ac9-8b7a-657c2ff081c5/AI_builder_example_OLS",
+   "top": 739
+  },
+  {
+   "alt": "AI Builder",
+   "src": "https://img1.wsimg.com/cdnassets/transform/a01e5af4-3f2a-4baa-b144-d878e856d9bd/AI_builder_example_Dashboard",
+   "top": 799
+  },
+  {
+   "alt": "AI Builder",
+   "src": "https://img1.wsimg.com/cdnassets/transform/f00b4a55-056b-45e3-a8c1-1e41d58f222b/AI_builder_example_Portfolio",
+   "top": 829
+  }
+ ],
+ "cookie": [],
+ "status": 200,
+ "mediaReqs": []
+}

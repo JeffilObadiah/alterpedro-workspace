@@ -1,0 +1,154 @@
+{
+ "title": "Design and Development agency building web and mobile products - thoughtbot",
+ "h1s": [
+  {
+   "t": "When the stakes are high, experience matters",
+   "v": true,
+   "top": 164
+  }
+ ],
+ "h2s": [
+  {
+   "t": "Featured case study",
+   "v": false,
+   "top": 956
+  },
+  {
+   "t": "Our services",
+   "v": false,
+   "top": 1864
+  },
+  {
+   "t": "Over 1,000+ positive outcomes",
+   "v": false,
+   "top": 2520
+  },
+  {
+   "t": "Service Highlight",
+   "v": false,
+   "top": 4400
+  },
+  {
+   "t": "Client Success",
+   "v": false,
+   "top": 5242
+  },
+  {
+   "t": "Our company",
+   "v": false,
+   "top": 7293
+  },
+  {
+   "t": "Resources for Designers, Developers, and Leaders",
+   "v": false,
+   "top": 8073
+  },
+  {
+   "t": "What does success look like for your project?",
+   "v": false,
+   "top": 9589
+  },
+  {
+   "t": "Footer",
+   "v": false,
+   "top": 9860
+  }
+ ],
+ "ctas": [
+  {
+   "tag": "A",
+   "t": "Skip to main content",
+   "href": "https://thoughtbot.com/#main",
+   "top": 0,
+   "left": 0
+  },
+  {
+   "tag": "A",
+   "t": "thoughtbot thoughtbot",
+   "href": "https://thoughtbot.com/",
+   "top": 0,
+   "left": 32
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Menu",
+   "href": "",
+   "top": 20,
+   "left": 330
+  },
+  {
+   "tag": "A",
+   "t": "Let’s talk",
+   "href": "https://thoughtbot.com/hire-us",
+   "top": 466,
+   "left": 32
+  }
+ ],
+ "ps": [
+  {
+   "t": "Our senior team partners with you to deliver reliable software and strengthen your team, even under complex constraints.",
+   "top": 362
+  }
+ ],
+ "vids": [
+  {
+   "vis": false,
+   "src": "https://thoughtbot-website.cdn.prismic.io/thoughtbot-website/aUlhJXNYClf9ok9t_Closeknit-Infinite-Scroll.mp4",
+   "autoplay": true,
+   "loop": true,
+   "muted": true,
+   "top": 988,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "https://thoughtbot-website.cdn.prismic.io/thoughtbot-website/aUlhJXNYClf9ok9t_Closeknit-Infinite-Scroll.mp4",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "top": 0,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "https://thoughtbot-website.cdn.prismic.io/thoughtbot-website/6FCW4fZ2PdNCLuqh_HealthcareSurveyReport.mp4",
+   "autoplay": true,
+   "loop": true,
+   "muted": true,
+   "top": 3978,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "https://thoughtbot-website.cdn.prismic.io/thoughtbot-website/6FCW4fZ2PdNCLuqh_HealthcareSurveyReport.mp4",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "top": 0,
+   "paused": true
+  }
+ ],
+ "iframes": [],
+ "imgs": [
+  {
+   "alt": "",
+   "src": "",
+   "top": 12
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 20
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 546
+  }
+ ],
+ "bodyHeight": 10819,
+ "forms": [],
+ "status": 304,
+ "url": "https://thoughtbot.com/",
+ "vp": "mobile"
+}

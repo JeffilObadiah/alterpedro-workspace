@@ -1,0 +1,757 @@
+{
+  "$schema": "ALTER Software Technologies — Design Tokens v2.1",
+  "meta": {
+    "brand": "Alter Pedro",
+    "company": "ALTER Software Technologies Private Limited",
+    "version": "2.1.0",
+    "created": "2026-08-12",
+    "updated": "2026-10-02",
+    "informedBy": "godaddy-v132 (motion + effect layers only; product layer is native ALTER)",
+    "principle": "Alter Pedro: Notion/Apple discipline — near-monochrome base, one accent used sparingly. Never more than 3-4 accent appearances per screen. Primary CTAs default to ink, not accent.",
+    "defaultMode": "light",
+    "notes": "v2.1 fixes motion.patterns refs to fully-qualified token paths; splits breakpoints into product + marketing ladders; adds component state matrix; adds density modes; adds dataViz palette.",
+    "legalEntity": "ALTER Software Technologies Private Limited"
+  },
+  "color": {
+    "neutral": {
+      "0": {
+        "light": "#FFFFFF",
+        "dark": "#0D0D0C"
+      },
+      "50": {
+        "light": "#FAFAF8",
+        "dark": "#141412"
+      },
+      "100": {
+        "light": "#F2F2EE",
+        "dark": "#1B1B18"
+      },
+      "200": {
+        "light": "#E4E4E0",
+        "dark": "#242422"
+      },
+      "300": {
+        "light": "#D6D6D1",
+        "dark": "#33332F"
+      },
+      "400": {
+        "light": "#A3A39D",
+        "dark": "#5A5A56"
+      },
+      "500": {
+        "light": "#787873",
+        "dark": "#787873"
+      },
+      "600": {
+        "light": "#5A5A56",
+        "dark": "#A3A39D"
+      },
+      "700": {
+        "light": "#3D3D3A",
+        "dark": "#C4C4BE"
+      },
+      "800": {
+        "light": "#262624",
+        "dark": "#E4E4E0"
+      },
+      "900": {
+        "light": "#111110",
+        "dark": "#F5F5F2"
+      }
+    },
+    "accent": {
+      "_comment": "Clean wine. Used for brand + product, everywhere. Amber owns error/warning so wine never collides with 'something is wrong'.",
+      "subtle": {
+        "light": "#FBEAEF",
+        "dark": "#2A0E17"
+      },
+      "muted": {
+        "light": "#E8B4C2",
+        "dark": "#5C1B30"
+      },
+      "text": {
+        "light": "#8B1538",
+        "dark": "#E0728F"
+      },
+      "fill": {
+        "light": "#8B1538",
+        "dark": "#B01B45"
+      },
+      "fillHover": {
+        "light": "#7A1030",
+        "dark": "#C4234F"
+      },
+      "deep": {
+        "light": "#7A1030",
+        "dark": "#7A1030"
+      }
+    },
+    "semantic": {
+      "success": {
+        "subtle": {
+          "light": "#EAF3DE",
+          "dark": "#173404"
+        },
+        "text": {
+          "light": "#3B6D11",
+          "dark": "#97C459"
+        },
+        "fill": {
+          "light": "#3B6D11",
+          "dark": "#639922"
+        }
+      },
+      "warning": {
+        "_comment": "Handles error AND warning states. Keeps wine free for brand.",
+        "subtle": {
+          "light": "#FBF2DF",
+          "dark": "#412402"
+        },
+        "text": {
+          "light": "#7A4E08",
+          "dark": "#EF9F27"
+        },
+        "fill": {
+          "light": "#B45309",
+          "dark": "#BA7517"
+        }
+      },
+      "danger": {
+        "_comment": "Reserved for destructive/severe only (delete, revoke) — not for missing-document states, which use warning.",
+        "subtle": {
+          "light": "#FCEBEB",
+          "dark": "#341313"
+        },
+        "text": {
+          "light": "#9E2020",
+          "dark": "#F09595"
+        },
+        "fill": {
+          "light": "#A32D2D",
+          "dark": "#E24B4A"
+        },
+        "fillHover": {
+          "light": "#8A2020",
+          "dark": "#C43A3A"
+        },
+        "fillActive": {
+          "light": "#781A1A",
+          "dark": "#A62E2E"
+        }
+      },
+      "info": {
+        "subtle": {
+          "light": "#E6F1FB",
+          "dark": "#042C53"
+        },
+        "text": {
+          "light": "#185FA5",
+          "dark": "#85B7EB"
+        },
+        "fill": {
+          "light": "#185FA5",
+          "dark": "#378ADD"
+        }
+      }
+    },
+    "surface": {
+      "page": {
+        "light": "#FAFAF8",
+        "dark": "#0D0D0C"
+      },
+      "card": {
+        "light": "#FFFFFF",
+        "dark": "#141412"
+      },
+      "raised": {
+        "light": "#FFFFFF",
+        "dark": "#1B1B18"
+      },
+      "overlay": {
+        "light": "#FFFFFF",
+        "dark": "#1B1B18"
+      }
+    },
+    "text": {
+      "primary": {
+        "light": "#111110",
+        "dark": "#F5F5F2"
+      },
+      "secondary": {
+        "light": "#5A5A56",
+        "dark": "#A3A39D"
+      },
+      "muted": {
+        "light": "#8F8F8A",
+        "dark": "#6E6E69"
+      },
+      "disabled": {
+        "light": "#C4C4BE",
+        "dark": "#3D3D3A"
+      },
+      "onAccent": {
+        "light": "#FFFFFF",
+        "dark": "#FFFFFF"
+      },
+      "onInk": {
+        "light": "#FFFFFF",
+        "dark": "#0D0D0C"
+      }
+    },
+    "border": {
+      "default": {
+        "light": "#EDEDEA",
+        "dark": "#242422"
+      },
+      "strong": {
+        "light": "#D6D6D1",
+        "dark": "#33332F"
+      },
+      "stronger": {
+        "light": "#A3A39D",
+        "dark": "#5A5A56"
+      }
+    },
+    "focusRing": {
+      "_comment": "Always visible on focus. Keyboard-first means focus is a feature, not a fallback.",
+      "color": "accent.fill",
+      "width": "2px",
+      "offset": "2px"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "_comment": "Inter covers Latin only. Noto Sans variants handle Devanagari/Tamil/Telugu/Kannada/Malayalam. Browser downloads only the scripts actually rendered, via unicode-range.",
+      "sans": "'Inter', 'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Kannada', 'Noto Sans Malayalam', -apple-system, 'Segoe UI', sans-serif",
+      "mono": "'JetBrains Mono', 'SF Mono', monospace",
+      "display": "'Cinzel', 'Playfair Display', 'Bodoni Moda', Georgia, serif",
+      "_displayNote": "Serif display. Reserved for the Alter Pedro logotype, marketing hero headlines, and editorial article titles. NEVER used in product UI — product stays Inter."
+    },
+    "numeric": {
+      "_comment": "Tabular numerals for all money, quantities, and totals. Mandatory — proportional numerals break column alignment in the cart.",
+      "variant": "tabular-nums",
+      "featureSettings": "'tnum' 1, 'lnum' 1"
+    },
+    "scale": {
+      "display": {
+        "size": "44px",
+        "weight": 500,
+        "lineHeight": 1.1,
+        "tracking": "-0.025em"
+      },
+      "heading": {
+        "size": "28px",
+        "weight": 500,
+        "lineHeight": 1.2,
+        "tracking": "-0.01em"
+      },
+      "subhead": {
+        "size": "18px",
+        "weight": 500,
+        "lineHeight": 1.4,
+        "tracking": "0em"
+      },
+      "body": {
+        "size": "16px",
+        "weight": 400,
+        "lineHeight": 1.6,
+        "tracking": "0em"
+      },
+      "small": {
+        "size": "13px",
+        "weight": 400,
+        "lineHeight": 1.5,
+        "tracking": "0em"
+      },
+      "caption": {
+        "size": "12px",
+        "weight": 400,
+        "lineHeight": 1.4,
+        "tracking": "0.02em"
+      },
+      "code": {
+        "size": "13px",
+        "weight": 400,
+        "lineHeight": 1.5,
+        "tracking": "0em",
+        "family": "mono"
+      },
+      "eyebrow": {
+        "size": "12px",
+        "weight": 500,
+        "lineHeight": 1.2,
+        "tracking": "0.08em",
+        "transform": "uppercase"
+      }
+    },
+    "marketing": {
+      "_comment": "Extended sizes for marketing/hero sections only. Never use in product UI.",
+      "6xl": {
+        "size": "64px",
+        "weight": 500,
+        "lineHeight": 1.05,
+        "tracking": "-0.03em",
+        "family": "display"
+      },
+      "7xl": {
+        "size": "80px",
+        "weight": 500,
+        "lineHeight": 1.0,
+        "tracking": "-0.035em",
+        "family": "display"
+      },
+      "8xl": {
+        "size": "96px",
+        "weight": 500,
+        "lineHeight": 0.95,
+        "tracking": "-0.04em",
+        "family": "display"
+      }
+    },
+    "weight": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700,
+      "heavy": 850
+    },
+    "lineHeight": {
+      "none": 1.0,
+      "tight": 1.1,
+      "snug": 1.2,
+      "normal": 1.4,
+      "relaxed": 1.5,
+      "loose": 1.6,
+      "looser": 1.8
+    },
+    "letterSpacing": {
+      "tighter": "-0.04em",
+      "tight": "-0.025em",
+      "normal": "0em",
+      "wide": "0.02em",
+      "wider": "0.04em",
+      "widest": "0.08em"
+    }
+  },
+  "spacing": {
+    "base": 4,
+    "scale": {
+      "xs": "4px",
+      "sm": "8px",
+      "md": "12px",
+      "lg": "16px",
+      "xl": "24px",
+      "2xl": "32px",
+      "3xl": "48px",
+      "4xl": "64px"
+    },
+    "marketing": {
+      "_comment": "For marketing/hero/section spacing only. Product UI stays in `scale`.",
+      "5xl": "80px",
+      "6xl": "96px",
+      "7xl": "128px",
+      "8xl": "160px",
+      "9xl": "192px"
+    }
+  },
+  "radius": {
+    "none": "0px",
+    "sm": "4px",
+    "md": "6px",
+    "lg": "8px",
+    "xl": "12px",
+    "pill": "999px"
+  },
+  "border": {
+    "width": {
+      "hairline": "0.5px",
+      "thin": "1px",
+      "medium": "1.5px",
+      "thick": "2px"
+    }
+  },
+  "shadow": {
+    "_comment": "v1.0 sm/md kept as the product baseline. `layered` is the 3-stack technique for surfaces where a single shadow looks flat. `dark` uses border-as-shadow on dark surfaces where drop shadows barely register.",
+    "sm": "0 1px 2px rgba(0,0,0,0.04)",
+    "md": "0 4px 12px rgba(0,0,0,0.08)",
+    "layered": {
+      "sm": "drop-shadow(0 2px 6px rgba(0,0,0,0.10)) drop-shadow(0 2px 3px rgba(0,0,0,0.07)) drop-shadow(0 0 0.5px rgba(0,0,0,0.20))",
+      "md": "drop-shadow(0 3px 8px rgba(0,0,0,0.15)) drop-shadow(0 4px 4px rgba(0,0,0,0.10)) drop-shadow(0 0 0.5px rgba(0,0,0,0.20))",
+      "lg": "drop-shadow(0 6px 12px rgba(0,0,0,0.15)) drop-shadow(0 12px 8px rgba(0,0,0,0.10)) drop-shadow(0 0 0.5px rgba(0,0,0,0.20))",
+      "xl": "drop-shadow(0 10px 16px rgba(0,0,0,0.15)) drop-shadow(0 20px 12px rgba(0,0,0,0.10)) drop-shadow(0 0 0.5px rgba(0,0,0,0.20))"
+    },
+    "dark": {
+      "card": "0 0 0 1px rgba(255,255,255,0.06), 0 8px 32px rgba(0,0,0,0.4)",
+      "hover": "0 0 0 1px rgba(255,255,255,0.12), 0 12px 48px rgba(0,0,0,0.5)"
+    },
+    "glowFocus": "0 0 0 3px rgba(139,21,56,0.10)"
+  },
+  "blur": {
+    "_comment": "For backdrop-filter on overlays, modals, sticky headers. subtle = whisper, medium = glass, heavy = heavy glass.",
+    "subtle": "2px",
+    "medium": "15px",
+    "heavy": "30px"
+  },
+  "filter": {
+    "_comment": "For image treatment, disabled-state inversion, and dark-mode asset handling.",
+    "brightness": {
+      "dim": "75%",
+      "muted": "90%",
+      "normal": "100%",
+      "bright": "150%"
+    },
+    "grayscale": "100%",
+    "invert": "100%"
+  },
+  "motion": {
+    "_comment": "v1.0 durations (fast/base/slow) kept as the product baseline. Extended set (medium/slower/slowest/typewriter) is for marketing and long-form entrances. All pattern references are fully-qualified token paths.",
+    "duration": {
+      "instant": "80ms",
+      "fast": "120ms",
+      "base": "200ms",
+      "slow": "320ms",
+      "medium": "400ms",
+      "slower": "500ms",
+      "slowest": "700ms",
+      "typewriter": "60ms"
+    },
+    "easing": {
+      "linear": "linear",
+      "out": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "inOut": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "standard": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "smoothAlt": "cubic-bezier(0.1, 0.25, 0.3, 1)",
+      "spring": "cubic-bezier(0.25, 0.61, 0.35, 1)",
+      "overshoot": "cubic-bezier(0.34, 1.36, 0.64, 1)"
+    },
+    "stagger": {
+      "_comment": "Time between sibling reveals in a list/grid. tight for dense tables, loose for hero card grids.",
+      "tight": "40ms",
+      "normal": "60ms",
+      "loose": "100ms"
+    },
+    "patterns": {
+      "_comment": "Named entrance/exit patterns pulled from GoDaddy v132 and filtered to fit a billing/POS context. Every reference is a fully-qualified token path. All patterns animate transform + opacity only.",
+      "staggerIn": {
+        "use": "list items, invoice line items, card grids",
+        "css": "@keyframes staggerIn { 0% { opacity: 0; transform: translate3d(0,-8px,0) } to { opacity: 1; transform: translateZ(0) } }",
+        "duration": "motion.duration.slow",
+        "easing": "motion.easing.spring",
+        "delay": "motion.stagger.normal"
+      },
+      "fadeUp": {
+        "use": "hero headlines, section titles, page transitions",
+        "css": "@keyframes fadeUp { 0% { opacity: 0; transform: translateY(1rem) } to { opacity: 1; transform: translateY(0) } }",
+        "duration": "motion.duration.medium",
+        "easing": "motion.easing.out"
+      },
+      "fadeUpSm": {
+        "use": "micro content, individual text lines",
+        "css": "@keyframes fadeUpSm { 0% { opacity: 0; transform: translateY(0.375rem) } to { opacity: 1; transform: translateY(0) } }",
+        "duration": "motion.duration.base",
+        "easing": "motion.easing.out"
+      },
+      "skeleton": {
+        "use": "loading shimmer for placeholder content",
+        "css": "@keyframes skeleton { to { transform: translate(100%) } }",
+        "duration": "1400ms",
+        "easing": "motion.easing.linear",
+        "iteration": "infinite",
+        "_note": "1400ms is intentionally outside the duration scale — shimmer cycle, not a UI transition."
+      },
+      "toastIn": {
+        "use": "toasts, save confirmations, growl",
+        "css": "@keyframes toastIn { 0% { opacity: 0; transform: translateY(0.5rem) } to { opacity: 1; transform: translateY(0) } }",
+        "duration": "motion.duration.base",
+        "easing": "motion.easing.out"
+      },
+      "toastOut": {
+        "use": "toasts, save confirmations, growl",
+        "css": "@keyframes toastOut { 0% { opacity: 1; transform: translateY(0) } to { opacity: 0; transform: translateY(-1rem) } }",
+        "duration": "motion.duration.fast",
+        "easing": "motion.easing.inOut"
+      },
+      "cursorBlink": {
+        "use": "typewriter cursor (if used anywhere)",
+        "css": "@keyframes cursorBlink { 0% { opacity: 0 } }",
+        "duration": "1000ms",
+        "easing": "steps(2)",
+        "iteration": "infinite",
+        "_note": "easing is a raw CSS timing function, not a token. Cursor blink is discrete steps, not eased."
+      }
+    }
+  },
+  "opacity": {
+    "_comment": "Named values only. Do not hardcode opacity inline.",
+    "disabled": 0.38,
+    "muted": 0.62,
+    "subtle": 0.38,
+    "faint": 0.2,
+    "border": 0.08,
+    "scrim": 0.72
+  },
+  "container": {
+    "_comment": "Max-widths for content columns. Product UI uses form/narrow/content/main. Marketing uses wide/marketing.",
+    "form": "345px",
+    "narrow": "548px",
+    "article": "573px",
+    "content": "640px",
+    "main": "1200px",
+    "wide": "1440px",
+    "marketing": "1920px"
+  },
+  "breakpoints": {
+    "_comment": "Two ladders. Product is what the app actually reflows at — five stops, nothing else. Marketing is unused unless a page lives under /marketing or /brand.",
+    "product": {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1366px",
+      "2xl": "1600px"
+    },
+    "marketing": {
+      "xs": "520px",
+      "sm": "640px",
+      "md": "768px",
+      "lg": "992px",
+      "xl": "1200px",
+      "2xl": "1280px",
+      "3xl": "1720px",
+      "4xl": "1920px"
+    }
+  },
+  "zIndex": {
+    "_comment": "Steps of 100 for main layers, tight offsets for related layers (modal/modalTop).",
+    "base": 0,
+    "raised": 1,
+    "dropdown": 100,
+    "sticky": 200,
+    "fixed": 250,
+    "nav": 275,
+    "overlay": 300,
+    "modal": 400,
+    "modalTop": 410,
+    "popover": 450,
+    "toast": 500,
+    "tooltip": 600
+  },
+  "component": {
+    "buttonPrimary": {
+      "_comment": "Default CTA is INK not accent. Accent reserved for secondary emphasis / links.",
+      "bg": "neutral.900",
+      "text": "text.onInk",
+      "radius": "radius.md",
+      "states": {
+        "hover": {
+          "bg": "neutral.800"
+        },
+        "active": {
+          "bg": "neutral.700"
+        },
+        "focus": {
+          "ring": "focusRing"
+        },
+        "disabled": {
+          "bg": "neutral.100",
+          "text": "text.disabled"
+        },
+        "loading": {
+          "text": "text.onInk",
+          "_note": "keep label space; overlay spinner centered"
+        }
+      }
+    },
+    "buttonAccent": {
+      "_comment": "Use sparingly — max one per view alongside a primary button.",
+      "bg": "accent.fill",
+      "text": "text.onAccent",
+      "radius": "radius.md",
+      "states": {
+        "hover": {
+          "bg": "accent.fillHover"
+        },
+        "active": {
+          "bg": "accent.deep"
+        },
+        "focus": {
+          "ring": "focusRing"
+        },
+        "disabled": {
+          "bg": "neutral.100",
+          "text": "text.disabled"
+        }
+      }
+    },
+    "buttonDanger": {
+      "_comment": "Destructive actions only (void bill, remove line confirm, revoke).",
+      "bg": "danger.fill",
+      "text": "text.onAccent",
+      "radius": "radius.md",
+      "states": {
+        "hover": {
+          "bg": "danger.text"
+        },
+        "active": {
+          "bg": "danger.text"
+        },
+        "focus": {
+          "ring": "focusRing"
+        },
+        "disabled": {
+          "bg": "neutral.100",
+          "text": "text.disabled"
+        }
+      }
+    },
+    "buttonGhost": {
+      "_comment": "Tertiary. No fill. Used for Cancel, Back, secondary actions.",
+      "bg": "transparent",
+      "text": "text.primary",
+      "border": "border.default",
+      "radius": "radius.md",
+      "states": {
+        "hover": {
+          "bg": "neutral.50"
+        },
+        "active": {
+          "bg": "neutral.100"
+        },
+        "focus": {
+          "ring": "focusRing"
+        },
+        "disabled": {
+          "text": "text.disabled",
+          "border": "border.default"
+        }
+      }
+    },
+    "buttonDisabled": {
+      "bg": "neutral.100",
+      "text": "text.disabled",
+      "border": "border.default"
+    },
+    "link": {
+      "color": "accent.text",
+      "states": {
+        "hover": {
+          "color": "accent.fillHover"
+        },
+        "focus": {
+          "ring": "focusRing"
+        },
+        "visited": {
+          "color": "accent.deep"
+        }
+      }
+    },
+    "cardBorder": {
+      "width": "border.width.hairline",
+      "color": "border.default",
+      "radius": "radius.lg"
+    },
+    "input": {
+      "bg": "surface.card",
+      "border": "border.default",
+      "borderFocus": "accent.fill",
+      "borderError": "danger.fill",
+      "radius": "radius.md",
+      "paddingX": "spacing.md",
+      "paddingY": "spacing.sm",
+      "states": {
+        "hover": {
+          "border": "border.strong"
+        },
+        "focus": {
+          "border": "accent.fill",
+          "ring": "focusRing"
+        },
+        "disabled": {
+          "bg": "neutral.50",
+          "text": "text.disabled",
+          "border": "border.default"
+        },
+        "error": {
+          "border": "danger.fill"
+        },
+        "readonly": {
+          "bg": "neutral.50"
+        }
+      }
+    }
+  },
+  "density": {
+    "_comment": "Two modes. Product defaults to comfortable. Compact is opt-in per surface (dense tables, admin panels, permission grids).",
+    "comfortable": {
+      "rowPaddingY": "spacing.sm",
+      "rowPaddingX": "spacing.md",
+      "cellPaddingY": "spacing.sm",
+      "cellPaddingX": "spacing.md",
+      "controlHeight": "40px",
+      "lineHeight": "typography.lineHeight.loose"
+    },
+    "compact": {
+      "rowPaddingY": "spacing.xs",
+      "rowPaddingX": "spacing.sm",
+      "cellPaddingY": "spacing.xs",
+      "cellPaddingX": "spacing.sm",
+      "controlHeight": "32px",
+      "lineHeight": "typography.lineHeight.normal"
+    }
+  },
+  "dataViz": {
+    "_comment": "Charts, sparklines, trend lines. Always reference these — never let a chart library pick its own colors.",
+    "series": [
+      "accent.fill",
+      "info.fill",
+      "success.fill",
+      "warning.fill",
+      "neutral.500"
+    ],
+    "positive": "success.text",
+    "negative": "danger.text",
+    "neutral": "text.muted",
+    "grid": "border.default",
+    "axis": "text.muted",
+    "tooltipBg": "surface.overlay",
+    "tooltipText": "text.primary"
+  },
+  "elevation": {
+    "_comment": "Sparingly. Card has border, not shadow. Overlays get sm; modals get md. Maps to shadow.sm and shadow.md.",
+    "sm": "shadow.sm",
+    "md": "shadow.md"
+  },
+  "print": {
+    "_comment": "Receipts and labels are always black on white. No wine, no accent, no neutral scale.",
+    "ink": "#000000",
+    "bg": "#FFFFFF",
+    "companyName": "ALTER Software Technologies Private Limited",
+    "brandName": "Alter Pedro"
+  },
+  "brand": {
+    "_comment": "Alter Pedro is the brand owned by ALTER Software Technologies Private Limited. Monochrome only — ink on light, or white on dark. Never tint the mark with wine.",
+    "logo": {
+      "primary": {
+        "file": "/brand/alterpedro-lockup.svg",
+        "use": "marketing header, footer, print"
+      },
+      "monogram": {
+        "file": "/brand/alterpedro-monogram.svg",
+        "use": "favicon, app icon, loading screen, small formats"
+      },
+      "wordmark": {
+        "file": "/brand/alterpedro-wordmark.svg",
+        "use": "when the monogram is already present"
+      }
+    },
+    "clearSpace": "height * 0.5",
+    "minSize": {
+      "lockup": "120px wide",
+      "monogram": "24px"
+    },
+    "colors": {
+      "light": "color.text.primary",
+      "dark": "color.neutral.0"
+    },
+    "rule": "Never color the logo. Never add effects. Never rotate. Wine accent is for buttons and links, not for the mark."
+  }
+}

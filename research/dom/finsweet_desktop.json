@@ -1,0 +1,223 @@
+{
+ "title": "Finsweet: Webflow Development, Design, and Product Agency",
+ "h1s": [
+  {
+   "t": "We build the websites and web apps behind high-growth B2B",
+   "v": true,
+   "top": 137
+  }
+ ],
+ "h2s": [
+  {
+   "t": "Dropbox transformed their events experience",
+   "v": false,
+   "top": 1704
+  },
+  {
+   "t": "Travel Planning Platform with Wized's Expertise",
+   "v": false,
+   "top": 2315
+  },
+  {
+   "t": "Access to a world leading agency that works as an extension of your team",
+   "v": false,
+   "top": 2911
+  },
+  {
+   "t": "What industry leaders say about working with our team",
+   "v": false,
+   "top": 3711
+  },
+  {
+   "t": "Unlock scale and efficiency like you've never seen in Webflow",
+   "v": false,
+   "top": 4531
+  },
+  {
+   "t": "Building a long term team and a culture that wins",
+   "v": false,
+   "top": 5271
+  },
+  {
+   "t": "Reliable high retention team",
+   "v": false,
+   "top": 5457
+  },
+  {
+   "t": "Interested in being part of our team?",
+   "v": false,
+   "top": 0
+  },
+  {
+   "t": "Transform your website experience",
+   "v": false,
+   "top": 6026
+  },
+  {
+   "t": "Finsweet Agency",
+   "v": false,
+   "top": 6218
+  },
+  {
+   "t": "Finsweet Products",
+   "v": false,
+   "top": 6218
+  },
+  {
+   "t": "Agency",
+   "v": false,
+   "top": 6767
+  }
+ ],
+ "ctas": [
+  {
+   "tag": "BUTTON",
+   "t": "Services",
+   "href": "",
+   "top": 35,
+   "left": 464
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Capabilities",
+   "href": "",
+   "top": 35,
+   "left": 557
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Industries",
+   "href": "",
+   "top": 35,
+   "left": 673
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Resources",
+   "href": "",
+   "top": 35,
+   "left": 776
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Company",
+   "href": "",
+   "top": 35,
+   "left": 883
+  },
+  {
+   "tag": "A",
+   "t": "Log in",
+   "href": "https://sso.finsweet.com/u/login",
+   "top": 35,
+   "left": 992
+  },
+  {
+   "tag": "A",
+   "t": "Contact Sales",
+   "href": "https://finsweet.com/agency/sales",
+   "top": 35,
+   "left": 1109
+  },
+  {
+   "tag": "A",
+   "t": "Expert Services",
+   "href": "https://finsweet.com/agency",
+   "top": 455,
+   "left": 506
+  },
+  {
+   "tag": "A",
+   "t": "Company",
+   "href": "https://finsweet.com/company",
+   "top": 455,
+   "left": 762
+  }
+ ],
+ "ps": [],
+ "vids": [
+  {
+   "vis": false,
+   "src": "blob:https://finsweet.com/c01e223d-a62f-4919-8706-28e044e2931d",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "top": 0,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "blob:https://finsweet.com/7abd4426-a1e2-49a5-bd00-4475f5ccbc89",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "top": 150,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "blob:https://finsweet.com/2e9bce4e-6d6b-416b-afcd-96a5a6d23707",
+   "autoplay": false,
+   "loop": true,
+   "muted": false,
+   "top": 0,
+   "paused": true
+  },
+  {
+   "vis": true,
+   "src": "blob:https://finsweet.com/f935099a-c3bc-4587-b25b-f64ee9ff4ed9",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "top": 584,
+   "paused": false
+  },
+  {
+   "vis": false,
+   "src": "blob:https://finsweet.com/1e942e18-aba2-475d-a138-5aa3b0da9b16",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "top": 0,
+   "paused": true
+  }
+ ],
+ "iframes": [],
+ "imgs": [
+  {
+   "alt": "",
+   "src": "",
+   "top": 41
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 47
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 47
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 471
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 471
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 876
+  }
+ ],
+ "bodyHeight": 7303,
+ "forms": [],
+ "status": "ERR Navigation timeout of 45000 ms exceeded",
+ "url": "https://www.finsweet.com/",
+ "vp": "desktop"
+}

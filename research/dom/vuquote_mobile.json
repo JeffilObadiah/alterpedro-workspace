@@ -1,0 +1,75 @@
+{
+ "title": "Vu Agency Project Quote AI",
+ "h1s": [
+  {
+   "t": "Get your project quoted in minutes and built in days.",
+   "v": true,
+   "top": 160
+  }
+ ],
+ "h2s": [
+  {
+   "t": "[HOW IT WORKS]",
+   "v": false,
+   "top": 1888
+  },
+  {
+   "t": "Questions to make your brief stronger",
+   "v": false,
+   "top": 0
+  },
+  {
+   "t": "Create your quote",
+   "v": false,
+   "top": 943
+  }
+ ],
+ "ctas": [],
+ "ps": [
+  {
+   "t": "Best experienced on desktop",
+   "top": 40
+  },
+  {
+   "t": "Desktop makes it easier to add detailed context to your brief, view mockups properly, and upload files during finalisation. You can continue on mobile, but we highly recommend using a desktop for the best experience.",
+   "top": 68
+  },
+  {
+   "t": "Get your project quoted in minutes and built in days.",
+   "top": 160
+  },
+  {
+   "t": "Describe your project and our AI agents will generate a complete specification, mockup, price and timeline within minutes.",
+   "top": 376
+  }
+ ],
+ "vids": [],
+ "iframes": [],
+ "imgs": [
+  {
+   "alt": "",
+   "src": "",
+   "top": 42
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 46
+  },
+  {
+   "alt": "",
+   "src": "https://quote.vu.co.uk/images/logoicon.svg",
+   "top": 32
+  },
+  {
+   "alt": "Vu Agency",
+   "src": "https://quote.vu.co.uk/images/logotext.svg",
+   "top": 34
+  }
+ ],
+ "bodyHeight": 2994,
+ "forms": [],
+ "status": 200,
+ "url": "https://quote.vu.co.uk/",
+ "vp": "mobile"
+}

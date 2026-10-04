@@ -1,0 +1,137 @@
+{
+ "title": "Custom Software, Web & Mobile App Development and Design",
+ "h1s": [
+  {
+   "t": "We build digital products for tomorrow to help businesses succeed today",
+   "v": true,
+   "top": 267
+  }
+ ],
+ "h2s": [
+  {
+   "t": "We are known for our work in these broad areas",
+   "v": false,
+   "top": 927
+  },
+  {
+   "t": "Trusted Globally by startups, unicorns, and enterprises",
+   "v": false,
+   "top": 1928
+  },
+  {
+   "t": "Our Services",
+   "v": false,
+   "top": 3390
+  },
+  {
+   "t": "Case Studies",
+   "v": false,
+   "top": 5081
+  },
+  {
+   "t": "Don’t Take Our Word For It, Hear Theirs.",
+   "v": false,
+   "top": 6199
+  },
+  {
+   "t": "Looking for help with development, design, or product strategy?",
+   "v": false,
+   "top": 7065
+  },
+  {
+   "t": "A monthly letter from an AI native agency.",
+   "v": false,
+   "top": 7624
+  }
+ ],
+ "ctas": [
+  {
+   "tag": "A",
+   "t": "Once a month, what we're seeing inside businesses using AI. Get Overheard →",
+   "href": "https://www.wednesday.is/newsletter?utm_source=wednesday-hellobar&utm_content=home",
+   "top": 0,
+   "left": 72
+  },
+  {
+   "tag": "A",
+   "t": "Case Studies",
+   "href": "https://www.wednesday.is/engineering-case-studies",
+   "top": 48,
+   "left": 545
+  },
+  {
+   "tag": "A",
+   "t": "Let's Talk",
+   "href": "https://www.wednesday.is/contact-us#contact-section",
+   "top": 48,
+   "left": 1233
+  },
+  {
+   "tag": "A",
+   "t": "Let's Talk",
+   "href": "https://www.wednesday.is/contact-us#contact-section",
+   "top": 579,
+   "left": 432
+  }
+ ],
+ "ps": [],
+ "vids": [
+  {
+   "vis": false,
+   "src": "https://www.dropbox.com/scl/fi/bo05vudoys8qszo6gv6dk/sandeep.mp4?rlkey=qoag8mtyvaljlchsmoqlq3sxe&st=yd2gpy0c&dl=1",
+   "autoplay": false,
+   "loop": true,
+   "muted": false,
+   "top": 6227,
+   "paused": true
+  }
+ ],
+ "iframes": [],
+ "imgs": [
+  {
+   "alt": "",
+   "src": "",
+   "top": 12
+  },
+  {
+   "alt": "",
+   "src": "https://www.wednesday.is/images/logo-wednesday.svg",
+   "top": 69
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 75
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 75
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 75
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 64
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 607
+  },
+  {
+   "alt": "",
+   "src": "images/66cecda5e8e0d8e0d848ae47_Illustration-(2)-p-1080.webp",
+   "top": 123
+  }
+ ],
+ "bodyHeight": 8775,
+ "forms": [],
+ "status": 200,
+ "url": "https://www.wednesday.is/",
+ "vp": "desktop"
+}

@@ -1,0 +1,199 @@
+{
+ "title": "Design and Development agency building web and mobile products - thoughtbot",
+ "h1s": [
+  {
+   "t": "When the stakes are high, experience matters",
+   "v": true,
+   "top": 307
+  }
+ ],
+ "h2s": [
+  {
+   "t": "Featured case study",
+   "v": false,
+   "top": 942
+  },
+  {
+   "t": "Our services",
+   "v": false,
+   "top": 2020
+  },
+  {
+   "t": "Over 1,000+ positive outcomes",
+   "v": false,
+   "top": 2548
+  },
+  {
+   "t": "Service Highlight",
+   "v": false,
+   "top": 3976
+  },
+  {
+   "t": "Client Success",
+   "v": false,
+   "top": 4542
+  },
+  {
+   "t": "Our company",
+   "v": false,
+   "top": 5796
+  },
+  {
+   "t": "Resources for Designers, Developers, and Leaders",
+   "v": false,
+   "top": 6354
+  },
+  {
+   "t": "What does success look like for your project?",
+   "v": false,
+   "top": 7163
+  },
+  {
+   "t": "Footer",
+   "v": false,
+   "top": 7457
+  }
+ ],
+ "ctas": [
+  {
+   "tag": "A",
+   "t": "Skip to main content",
+   "href": "https://thoughtbot.com/#main",
+   "top": 0,
+   "left": 0
+  },
+  {
+   "tag": "A",
+   "t": "thoughtbot thoughtbot",
+   "href": "https://thoughtbot.com/",
+   "top": 14,
+   "left": 36
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Services",
+   "href": "",
+   "top": 25,
+   "left": 415
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Industries",
+   "href": "",
+   "top": 25,
+   "left": 541
+  },
+  {
+   "tag": "A",
+   "t": "Case Studies",
+   "href": "https://thoughtbot.com/case-studies",
+   "top": 24,
+   "left": 686
+  },
+  {
+   "tag": "BUTTON",
+   "t": "Resources",
+   "href": "",
+   "top": 25,
+   "left": 828
+  },
+  {
+   "tag": "A",
+   "t": "Blog",
+   "href": "https://thoughtbot.com/blog",
+   "top": 24,
+   "left": 964
+  },
+  {
+   "tag": "A",
+   "t": "Let’s get started!",
+   "href": "https://thoughtbot.com/hire-us",
+   "top": 14,
+   "left": 1200
+  },
+  {
+   "tag": "A",
+   "t": "Let’s talk",
+   "href": "https://thoughtbot.com/hire-us",
+   "top": 584,
+   "left": 36
+  }
+ ],
+ "ps": [
+  {
+   "t": "Our senior team partners with you to deliver reliable software and strengthen your team, even under complex constraints.",
+   "top": 457
+  }
+ ],
+ "vids": [
+  {
+   "vis": false,
+   "src": "https://thoughtbot-website.cdn.prismic.io/thoughtbot-website/aUlhJXNYClf9ok9t_Closeknit-Infinite-Scroll.mp4",
+   "autoplay": true,
+   "loop": true,
+   "muted": true,
+   "top": 979,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "https://thoughtbot-website.cdn.prismic.io/thoughtbot-website/aUlhJXNYClf9ok9t_Closeknit-Infinite-Scroll.mp4",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "top": 0,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "https://thoughtbot-website.cdn.prismic.io/thoughtbot-website/6FCW4fZ2PdNCLuqh_HealthcareSurveyReport.mp4",
+   "autoplay": true,
+   "loop": true,
+   "muted": true,
+   "top": 3304,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "https://thoughtbot-website.cdn.prismic.io/thoughtbot-website/6FCW4fZ2PdNCLuqh_HealthcareSurveyReport.mp4",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "top": 0,
+   "paused": true
+  }
+ ],
+ "iframes": [],
+ "imgs": [
+  {
+   "alt": "",
+   "src": "",
+   "top": 14
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 32
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 32
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 32
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 151
+  }
+ ],
+ "bodyHeight": 7900,
+ "forms": [],
+ "status": 200,
+ "url": "https://thoughtbot.com/",
+ "vp": "desktop"
+}

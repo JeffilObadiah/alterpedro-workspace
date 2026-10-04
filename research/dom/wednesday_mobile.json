@@ -1,0 +1,108 @@
+{
+ "title": "Custom Software, Web & Mobile App Development and Design",
+ "h1s": [
+  {
+   "t": "We build digital products for tomorrow to help businesses succeed today",
+   "v": true,
+   "top": 224
+  }
+ ],
+ "h2s": [
+  {
+   "t": "We are known for our work in these broad areas",
+   "v": true,
+   "top": 708
+  },
+  {
+   "t": "Trusted Globally by startups, unicorns, and enterprises",
+   "v": false,
+   "top": 2131
+  },
+  {
+   "t": "Our Services",
+   "v": false,
+   "top": 3290
+  },
+  {
+   "t": "Case Studies",
+   "v": false,
+   "top": 5293
+  },
+  {
+   "t": "Don’t Take Our Word For It, Hear Theirs.",
+   "v": false,
+   "top": 6955
+  },
+  {
+   "t": "Looking for help with development, design, or product strategy?",
+   "v": false,
+   "top": 6619
+  },
+  {
+   "t": "A monthly letter from an AI native agency.",
+   "v": false,
+   "top": 8257
+  }
+ ],
+ "ctas": [
+  {
+   "tag": "A",
+   "t": "Once a month, what we're seeing inside businesses using AI. Get Overheard →",
+   "href": "https://www.wednesday.is/newsletter?utm_source=wednesday-hellobar&utm_content=home",
+   "top": 0,
+   "left": 10
+  },
+  {
+   "tag": "A",
+   "t": "Let's Talk",
+   "href": "https://www.wednesday.is/contact-us#contact-section",
+   "top": 496,
+   "left": 32
+  }
+ ],
+ "ps": [
+  {
+   "t": "We are known for our work in these broad areas",
+   "top": 708
+  }
+ ],
+ "vids": [
+  {
+   "vis": false,
+   "src": "https://www.dropbox.com/scl/fi/bo05vudoys8qszo6gv6dk/sandeep.mp4?rlkey=qoag8mtyvaljlchsmoqlq3sxe&st=yd2gpy0c&dl=1",
+   "autoplay": false,
+   "loop": true,
+   "muted": false,
+   "top": 7168,
+   "paused": true
+  }
+ ],
+ "iframes": [],
+ "imgs": [
+  {
+   "alt": "",
+   "src": "",
+   "top": 12
+  },
+  {
+   "alt": "",
+   "src": "https://www.wednesday.is/images/logo-wednesday.svg",
+   "top": 74
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 508
+  },
+  {
+   "alt": "",
+   "src": "/66cecda5e8e0d8e0d848ae47_Illustration-(2)-p-1080-p-500.webp",
+   "top": 128
+  }
+ ],
+ "bodyHeight": 9736,
+ "forms": [],
+ "status": 304,
+ "url": "https://www.wednesday.is/",
+ "vp": "mobile"
+}

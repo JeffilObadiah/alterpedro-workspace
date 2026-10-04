@@ -1,0 +1,154 @@
+{
+ "title": "Vu Agency | Custom Software, Built to Order",
+ "h1s": [
+  {
+   "t": "We build the software your business is missing.",
+   "v": true,
+   "top": 80
+  }
+ ],
+ "h2s": [
+  {
+   "t": "What happens after you send your requirement.",
+   "v": false,
+   "top": 871
+  },
+  {
+   "t": "What goes into each build.",
+   "v": false,
+   "top": 2778
+  },
+  {
+   "t": "Software we've built is running work every day.",
+   "v": false,
+   "top": 3747
+  },
+  {
+   "t": "Tell us what you need.",
+   "v": false,
+   "top": 5097
+  },
+  {
+   "t": "Optional cookies",
+   "v": true,
+   "top": 545
+  }
+ ],
+ "ctas": [
+  {
+   "tag": "A",
+   "t": "SEND YOUR REQUIREMENT",
+   "href": "https://vu.co.uk/#requirement",
+   "top": 383,
+   "left": 24
+  },
+  {
+   "tag": "A",
+   "t": "HOW IT WORKS",
+   "href": "https://vu.co.uk/#how",
+   "top": 456,
+   "left": 24
+  },
+  {
+   "tag": "A",
+   "t": "SEE OUR WORK",
+   "href": "https://vu.co.uk/our-work",
+   "top": 596,
+   "left": 213
+  },
+  {
+   "tag": "A",
+   "t": "Message us on WhatsApp",
+   "href": "https://wa.me/447792940327",
+   "top": 780,
+   "left": 326
+  },
+  {
+   "tag": "BUTTON",
+   "t": "ALLOW OPTIONAL COOKIES",
+   "href": "",
+   "top": 715,
+   "left": 37
+  },
+  {
+   "tag": "BUTTON",
+   "t": "ESSENTIAL ONLY",
+   "href": "",
+   "top": 766,
+   "left": 37
+  },
+  {
+   "tag": "A",
+   "t": "READ THE POLICY",
+   "href": "https://vu.co.uk/privacy-policy#cookies",
+   "top": 766,
+   "left": 182
+  }
+ ],
+ "ps": [
+  {
+   "t": "We build software, filling gaps between tools that your team already use, with the saving and running costs assessed before the build.",
+   "top": 206
+  },
+  {
+   "t": "We handle the build, security and ongoing maintenance.",
+   "top": 311
+  },
+  {
+   "t": "50+ businesses run work through software we've built",
+   "top": 654
+  },
+  {
+   "t": "Optional cookies",
+   "top": 545
+  },
+  {
+   "t": "Google Analytics helps us understand site use. Meta and LinkedIn tags measure responses to our advertising. We only load these tags and set campaign cookies if you choose Allow Optional Cookies.",
+   "top": 581
+  }
+ ],
+ "vids": [],
+ "iframes": [],
+ "imgs": [
+  {
+   "alt": "",
+   "src": "https://vu.co.uk/images/logoicon.svg",
+   "top": 31
+  },
+  {
+   "alt": "Vu Agency",
+   "src": "https://vu.co.uk/images/logotext.svg",
+   "top": 33
+  },
+  {
+   "alt": "Solihull Awards Winner",
+   "src": "ign/use-badge-solihull-awards-winner-2025-h1050px-w822px.jpg",
+   "top": 552
+  },
+  {
+   "alt": "Ben Breen",
+   "src": "https://vu.co.uk/images/our-work/ben-breen.webp",
+   "top": 665
+  },
+  {
+   "alt": "Sara Bremner",
+   "src": "https://vu.co.uk/images/our-work/sara-bremner.webp",
+   "top": 665
+  },
+  {
+   "alt": "Jo Salmon",
+   "src": "https://vu.co.uk/images/our-work/jo-salmon.webp",
+   "top": 665
+  },
+  {
+   "alt": "",
+   "src": "",
+   "top": 795
+  }
+ ],
+ "bodyHeight": 7423,
+ "forms": [],
+ "status": 200,
+ "url": "https://www.vu.co.uk/",
+ "vp": "mobile"
+}

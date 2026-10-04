@@ -1,0 +1,50 @@
+## our systems don't talk to each other
+["our systems don't talk to each other",[]]
+## systems not talking to each other
+["systems not talking to each other",["systems not talking to each other","can alters communicate with each other","can alters talk to each other","is it possible to not communicate"],[],{"google:suggestsubtypes":[[22,30],[512,650,390],[512,650,390],[512,650,390]]}]
+## software systems that don't integrate
+["software systems that don't integrate",[]]
+## website gets traffic but no
+["website gets traffic but no",["website get traffic but no leads","getting website traffic but no sales","why your website gets traffic but no leads","website traffic but no sales","why is my website getting traffic but no sales","why is my website not getting traffic","can you see a websites traffic","know traffic of website"],[],{"google:suggestsubtypes":[[22,30,10],[22,30],[22,30],[22,30],[22,30],[512,650,390],[512,650,390],[512,650,390]]}]
+## why is my website getting traffic but no
+["why is my website getting traffic but no",["why is my website getting traffic but no sales","why is my website not getting traffic","why is my website getting no traffic","why is my website traffic dropping"],[],{"google:suggestsubtypes":[[22,30],[22,30],[22,30],[512,650,390]]}]
+## website traffic but no enquiries
+["website traffic but no enquiries",[]]
+## spending too much time on manual reports
+["spending too much time on manual reports",[]]
+## how to stop manual reporting
+["how to stop manual reporting",[]]
+## automate weekly reports
+["automate weekly reports",[]]
+## want to use ai but don't know where to start
+["want to use ai but don't know where to start",[]]
+## how to start with ai in my business
+["how to start with ai in my business",["how to use ai in my business","how to start a business in artificial intelligence","how to start an ai company","how to start ai startup","how to become an ai entrepreneur"],[],{"google:suggestsubtypes":[[22,30],[512,650,390],[512,650,390],[512,650,390],[512,650,390]]}]
+## where to start with ai
+["where to start with ai",["where to start with ai","where to start with ai learning","where to start with ai reddit","where to start with ai agents","where to start with airsoft","where to start with airbnb","where to start with ai automation","where to start with using ai","where to start with hearing aids","where to start with an air fryer"],[],{"google:suggestsubtypes":[[512],[512],[512],[22,30],[22,30],[22,30],[22,30],[22,30],[22,30],[22,30]]}]
+## old software
+["old software",["old software","old software download","old software archive","old software programs","old software languages","old software for sale","old software download sites","old software list","old software companies","old software and new software difference"],[],{"google:suggestsubtypes":[[512],[512],[512],[512],[512],[512],[512],[512],[512],[512]]}]
+## our software is outdated
+["our software is outdated",["your software is outdated","how to update outdated software"],[],{"google:suggestsubtypes":[[22,30],[512,650,390]]}]
+## legacy software replace
+["legacy software replace",[]]
+## i have an app idea but no technical
+["i have an app idea but no technical",[]]
+## have an idea but no developer
+["have an idea but no developer",[]]
+## how to build an app with no technical team
+["how to build an app with no technical team",[]]
+## inventory doesn't match
+["inventory doesn't match",[]]
+## inventory count does not match
+["inventory count does not match",[]]
+## inventory discrepancy
+["inventory discrepancy",["inventory discrepancy","inventory discrepancy meaning","inventory discrepancy report template","inventory discrepancy synonym","inventory discrepancy investigation","inventory discrepancy report","inventory discrepancy formula","inventory discrepancy form","inventory discrepancy report sample","inventory discrepancy rate"],[],{"google:suggestsubtypes":[[512],[512],[512],[512],[512],[512],[512],[22,30],[22,30],[22,30]]}]
+## erp implementation failed
+["erp implementation failed",["erp implementation failed","sap implementation failed","erp implementation failure case study","erp implementation failure rate","erp implementation failure at hershey foods corporation","erp implementation failure at revlon","erp implementation failure examples","erp implementation failure reasons","erp implementation failure is often due to","erp implementation failure statistics"],[],{"google:suggestsubtypes":[[22,30],[22,30],[22,30],[22,30],[22,30],[22,30],[22,30],[22,30],[22,30],[22,30]]}]
+## failed erp implementation
+["failed erp implementation",["failed erp implementation","failed erp implementation examples","failed erp implementation the hershey's case study","failed erp implementation case studies","failed erp implementation hershey","failed sap implementation","unsuccessful erp implementation","nike failed erp implementation","revlon failed erp implementation","companies failed erp implementation"],[],{"google:suggestsubtypes":[[512],[512],[22,30],[22,30],[22,30],[22,30],[22,30],[22,30],[22,30],[22,30]]}]
+## why erp fails
+["why erp fails",["why erp fails","why erp implementation fails","causes of erp failure"],[],{"google:suggestsubtypes":[[22,30],[22,30],[512,650,390]]}]
+## erp project failed what to do
+["erp project failed what to do",[]]

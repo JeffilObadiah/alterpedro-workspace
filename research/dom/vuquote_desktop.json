@@ -1,0 +1,136 @@
+{
+ "title": "Vu Agency Project Quote AI",
+ "h1s": [
+  {
+   "t": "Get your project quoted in minutes and built in days.",
+   "v": true,
+   "top": 208
+  }
+ ],
+ "h2s": [
+  {
+   "t": "[HOW IT WORKS]",
+   "v": true,
+   "top": 706
+  },
+  {
+   "t": "Questions to make your brief stronger",
+   "v": false,
+   "top": 0
+  },
+  {
+   "t": "Create your quote",
+   "v": true,
+   "top": 702
+  }
+ ],
+ "ctas": [
+  {
+   "tag": "A",
+   "t": "PROJECT QUOTE AI",
+   "href": "https://quote.vu.co.uk/",
+   "top": 24,
+   "left": 48
+  },
+  {
+   "tag": "A",
+   "t": "SERVICES",
+   "href": "https://vu.co.uk/services",
+   "top": 34,
+   "left": 580
+  },
+  {
+   "tag": "A",
+   "t": "OUR WORK",
+   "href": "https://vu.co.uk/our-work",
+   "top": 34,
+   "left": 699
+  },
+  {
+   "tag": "A",
+   "t": "ABOUT VU",
+   "href": "https://vu.co.uk/",
+   "top": 34,
+   "left": 817
+  },
+  {
+   "tag": "A",
+   "t": "CONTACT US",
+   "href": "https://vu.co.uk/contact",
+   "top": 30,
+   "left": 1120
+  },
+  {
+   "tag": "A",
+   "t": "MY QUOTES",
+   "href": "https://quote.vu.co.uk/login",
+   "top": 30,
+   "left": 1254
+  },
+  {
+   "tag": "BUTTON",
+   "t": "WRITE",
+   "href": "",
+   "top": 809,
+   "left": 553
+  },
+  {
+   "tag": "BUTTON",
+   "t": "SPEAK",
+   "href": "",
+   "top": 809,
+   "left": 966
+  }
+ ],
+ "ps": [
+  {
+   "t": "Get your project quoted in minutes and built in days.",
+   "top": 208
+  },
+  {
+   "t": "Describe your project and our AI agents will generate a complete specification, mockup, price and timeline within minutes.",
+   "top": 432
+  },
+  {
+   "t": "Describe your project",
+   "top": 750
+  },
+  {
+   "t": "Write or speak your requirements. Try to include as much detail as possible, including goals, issues, and any constraints you're facing.",
+   "top": 782
+  },
+  {
+   "t": "As you type/speak, we'll suggest optional clarifying questions to help you refine your brief.",
+   "top": 885
+  },
+  {
+   "t": "Create your quote",
+   "top": 702
+  },
+  {
+   "t": "Submit your project details to get started",
+   "top": 740
+  }
+ ],
+ "vids": [],
+ "iframes": [],
+ "imgs": [
+  {
+   "alt": "",
+   "src": "https://quote.vu.co.uk/images/logoicon.svg",
+   "top": -34
+  },
+  {
+   "alt": "Vu Agency",
+   "src": "https://quote.vu.co.uk/images/logotext.svg",
+   "top": 45
+  }
+ ],
+ "bodyHeight": 1695,
+ "forms": [
+  "FORM:"
+ ],
+ "status": 200,
+ "url": "https://quote.vu.co.uk/",
+ "vp": "desktop"
+}

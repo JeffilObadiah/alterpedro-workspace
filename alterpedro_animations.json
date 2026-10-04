@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "name": "Alter Motion Patterns",
+    "source": "extracted from godaddy-v132 keyframes-full.css",
+    "total-keyframes-found": 336
+  },
+  "patterns": [
+    {
+      "id": "stagger-in",
+      "use": "list items, card grids",
+      "css": "@keyframes stagger-in { 0% { opacity: 0; transform: translate3d(0,-8px,0) } to { opacity: 1; transform: translateZ(0) } }",
+      "duration": "500ms",
+      "easing": "cubic-bezier(0.25,0.61,0.35,1)",
+      "delay": "60ms"
+    },
+    {
+      "id": "fade-up",
+      "use": "hero headlines, section titles",
+      "css": "@keyframes fade-up { 0% { opacity: 0; transform: translateY(1rem) } to { opacity: 1; transform: translateY(0) } }",
+      "duration": "400ms",
+      "easing": "cubic-bezier(0.16,1,0.3,1)"
+    },
+    {
+      "id": "fade-up-sm",
+      "use": "micro content, text lines",
+      "css": "@keyframes fade-up-sm { 0% { opacity: 0; transform: translateY(0.375rem) } to { opacity: 1; transform: translateY(0) } }",
+      "duration": "350ms",
+      "easing": "cubic-bezier(0.16,1,0.3,1)"
+    },
+    {
+      "id": "fade-up-md",
+      "use": "cards, medium content",
+      "css": "@keyframes fade-up-md { 0% { opacity: 0; transform: translateY(0.625rem) } to { opacity: 1; transform: translateY(0) } }",
+      "duration": "400ms",
+      "easing": "cubic-bezier(0.16,1,0.3,1)"
+    },
+    {
+      "id": "depth-50",
+      "use": "depth reveal - near",
+      "css": "@keyframes depth-50 { from { opacity: 0; transform: translateZ(-50px) } to { opacity: 1; transform: translateZ(0) } }",
+      "duration": "400ms",
+      "easing": "cubic-bezier(0.16,1,0.3,1)"
+    },
+    {
+      "id": "depth-200",
+      "use": "depth reveal - mid",
+      "css": "@keyframes depth-200 { from { opacity: 0; transform: translateZ(-200px) } to { opacity: 1; transform: translateZ(0) } }",
+      "duration": "400ms",
+      "easing": "cubic-bezier(0.16,1,0.3,1)"
+    },
+    {
+      "id": "depth-500",
+      "use": "depth reveal - far",
+      "css": "@keyframes depth-500 { from { opacity: 0; transform: translateZ(-500px) } to { opacity: 1; transform: translateZ(0) } }",
+      "duration": "400ms",
+      "easing": "cubic-bezier(0.16,1,0.3,1)"
+    },
+    {
+      "id": "scale-in-sm",
+      "use": "cards entering",
+      "css": "@keyframes scale-in-sm { 0% { opacity: 0.4; transform: scale(0.93) } to { opacity: 1; transform: scale(1) } }",
+      "duration": "400ms",
+      "easing": "cubic-bezier(0.16,1,0.3,1)"
+    },
+    {
+      "id": "spring-pop",
+      "use": "notifications, popovers",
+      "css": "@keyframes spring-pop { 0% { opacity: 0; transform: translateY(-50%) scale(0) } to { opacity: 1; transform: translateY(-50%) scale(1) } }",
+      "duration": "400ms",
+      "easing": "cubic-bezier(0.34,1.36,0.64,1)"
+    },
+    {
+      "id": "cursor-blink",
+      "use": "typewriter cursor",
+      "css": "@keyframes cursor-blink { 0% { opacity: 0 } }",
+      "duration": "1s",
+      "easing": "steps(2)",
+      "iteration": "infinite"
+    },
+    {
+      "id": "skeleton",
+      "use": "loading shimmer",
+      "css": "@keyframes skeleton { to { transform: translate(100%) } }",
+      "duration": "1.4s",
+      "easing": "linear",
+      "iteration": "infinite"
+    },
+    {
+      "id": "toast-in",
+      "use": "toasts, growls",
+      "css": "@keyframes toast-in { 0% { opacity: 0; transform: translateY(0.5rem) } to { opacity: 1; transform: translateY(0) } }",
+      "duration": "300ms",
+      "easing": "cubic-bezier(0.16,1,0.3,1)"
+    },
+    {
+      "id": "toast-out",
+      "use": "toasts, growls",
+      "css": "@keyframes toast-out { 0% { opacity: 1; transform: translateY(0) } to { opacity: 0; transform: translateY(-1rem) } }",
+      "duration": "250ms",
+      "easing": "cubic-bezier(0.4,0,1,1)"
+    },
+    {
+      "id": "idle-pulse",
+      "use": "attention marker on a dot/pin",
+      "css": "@keyframes idle-pulse { 0%,100% { opacity: 1; transform: scale(1) } 50% { opacity: 0.6; transform: scale(1.15) } }",
+      "duration": "2s",
+      "easing": "ease-in-out",
+      "iteration": "infinite"
+    }
+  ],
+  "rules": {
+    "stagger-unit": "60ms",
+    "default-easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "animate-only": ["transform", "opacity"],
+    "respect-reduced-motion": true
+  }
+}

@@ -1,0 +1,12 @@
+import puppeteer from '/home/box/.npm/_npx/0f94ee7615faf582/node_modules/puppeteer-core/lib/puppeteer/puppeteer-core.js';
+const b = await puppeteer.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox'] });
+const p = await b.newPage(); await p.setViewport({ width: 412, height: 823, isMobile: true, deviceScaleFactor: 1 });
+await p.goto('http://localhost:8787/', { waitUntil: 'networkidle0' });
+const snap = () => p.evaluate(() => Object.fromEntries(['h1','textarea','.chips','.privacy','.row','[data-stage]','#what-you-get','[data-start]'].map(s => { const r = document.querySelector(s).getBoundingClientRect(); return [s, Math.round(r.top + scrollY) + '/' + Math.round(r.height)]; })));
+const kids = () => p.evaluate(() => [...document.querySelector('.row').children].map(c => c.tagName + ':' + Math.round(c.getBoundingClientRect().width) + 'x' + Math.round(c.getBoundingClientRect().height) + ' ' + c.textContent.trim().slice(0,20) + ' disp=' + getComputedStyle(c).display));
+console.log('rowkids0', JSON.stringify(await kids()));
+console.log('0', JSON.stringify(await snap()));
+await p.click('[data-chip]'); console.log('chip', JSON.stringify(await snap()));
+await p.click('[data-start]'); await p.waitForSelector('.scan-question'); console.log('rowkids1', JSON.stringify(await kids()));
+console.log('turn1', JSON.stringify(await snap()));
+await b.close();

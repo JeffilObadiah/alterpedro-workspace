@@ -1,0 +1,804 @@
+{
+ "title": "Clay | Build systems to grow revenue",
+ "h1s": [
+  {
+   "t": "Build systems to grow revenue",
+   "v": true,
+   "top": 596
+  }
+ ],
+ "h2s": [
+  {
+   "t": "GTM engineers build on Clay",
+   "v": false,
+   "top": 1416
+  },
+  {
+   "t": "Turn your growth ideas into reality today",
+   "v": false,
+   "top": 8815
+  }
+ ],
+ "ctas": [
+  {
+   "tag": "A",
+   "t": "The most creative minds in GTM. October 8, San Francisco GET TICKETS →",
+   "href": "https://www.sculpt.clay.com/",
+   "top": 0,
+   "left": 0
+  },
+  {
+   "tag": "A",
+   "t": "Product Product",
+   "href": "https://www.clay.com/#",
+   "top": 52,
+   "left": 159
+  },
+  {
+   "tag": "A",
+   "t": "Solutions Solutions",
+   "href": "https://www.clay.com/#",
+   "top": 52,
+   "left": 231
+  },
+  {
+   "tag": "A",
+   "t": "Resources Resources",
+   "href": "https://www.clay.com/#",
+   "top": 52,
+   "left": 311
+  },
+  {
+   "tag": "A",
+   "t": "Company Company",
+   "href": "https://www.clay.com/#",
+   "top": 52,
+   "left": 398
+  },
+  {
+   "tag": "A",
+   "t": "Pricing Pricing",
+   "href": "https://www.clay.com/pricing",
+   "top": 52,
+   "left": 480
+  },
+  {
+   "tag": "BUTTON",
+   "t": "⌘ K",
+   "href": "",
+   "top": 55,
+   "left": 1012
+  },
+  {
+   "tag": "A",
+   "t": "Log in",
+   "href": "https://app.clay.com/",
+   "top": 56,
+   "left": 1083
+  },
+  {
+   "tag": "A",
+   "t": "Get a demo",
+   "href": "https://www.clay.com/demo",
+   "top": 53,
+   "left": 1144
+  },
+  {
+   "tag": "A",
+   "t": "Start free trial",
+   "href": "https://app.clay.com/signup?source=nav&su=c44eabf3-547f-43d9-bfcc-19879b884d1c",
+   "top": 53,
+   "left": 1258
+  },
+  {
+   "tag": "A",
+   "t": "Audiences",
+   "href": "https://www.clay.com/audiences",
+   "top": 147,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Data marketplace",
+   "href": "https://www.clay.com/integrations",
+   "top": 189,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Signals and Intent",
+   "href": "https://www.clay.com/signals",
+   "top": 231,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Waterfall",
+   "href": "https://www.clay.com/waterfall-enrichment",
+   "top": 273,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Claygents",
+   "href": "https://www.clay.com/claygent",
+   "top": 147,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "Account Agents",
+   "href": "https://www.clay.com/account-agents",
+   "top": 189,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "Agent plugin CLI/API",
+   "href": "https://www.clay.com/agent-plugin",
+   "top": 231,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "MCP for reps",
+   "href": "https://www.clay.com/mcp",
+   "top": 273,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "Workflows",
+   "href": "https://www.clay.com/workflows",
+   "top": 147,
+   "left": 566
+  },
+  {
+   "tag": "A",
+   "t": "Functions",
+   "href": "https://www.clay.com/functions",
+   "top": 189,
+   "left": 566
+  },
+  {
+   "tag": "A",
+   "t": "AI formatting",
+   "href": "https://www.clay.com/ai-formula",
+   "top": 231,
+   "left": 566
+  },
+  {
+   "tag": "A",
+   "t": "Ads",
+   "href": "https://www.clay.com/ads",
+   "top": 147,
+   "left": 820
+  },
+  {
+   "tag": "A",
+   "t": "Sequencer",
+   "href": "https://www.clay.com/sequencer",
+   "top": 189,
+   "left": 820
+  },
+  {
+   "tag": "A",
+   "t": "CLAY MCP Give reps the best prospecting data in their AI tools",
+   "href": "https://www.clay.com/mcp",
+   "top": 125,
+   "left": 1073
+  },
+  {
+   "tag": "A",
+   "t": "CRM enrichment",
+   "href": "https://www.clay.com/use-cases/crm-enrichment",
+   "top": 147,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "TAM sourcing",
+   "href": "https://www.clay.com/use-cases/tam-sourcing",
+   "top": 177,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Territory planning",
+   "href": "https://www.clay.com/use-cases/territory-planning",
+   "top": 206,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Reverse ETL",
+   "href": "https://www.clay.com/use-cases/reverse-etl",
+   "top": 236,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Outbound",
+   "href": "https://www.clay.com/use-cases/outbound",
+   "top": 147,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "Automated inbound",
+   "href": "https://www.clay.com/use-cases/inbound-enrichment",
+   "top": 177,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "PLG assist",
+   "href": "https://www.clay.com/use-cases/plg-assist",
+   "top": 206,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "ABM",
+   "href": "https://www.clay.com/use-cases/abm",
+   "top": 236,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "Rep prospecting",
+   "href": "https://www.clay.com/use-cases/rep-prospecting",
+   "top": 147,
+   "left": 566
+  },
+  {
+   "tag": "A",
+   "t": "Account research",
+   "href": "https://www.clay.com/use-cases/account-research",
+   "top": 177,
+   "left": 566
+  },
+  {
+   "tag": "A",
+   "t": "Rep assist",
+   "href": "https://www.clay.com/use-cases/rep-assist",
+   "top": 206,
+   "left": 566
+  },
+  {
+   "tag": "A",
+   "t": "GTM Ops",
+   "href": "https://www.clay.com/clay-for-gtm-ops",
+   "top": 147,
+   "left": 820
+  },
+  {
+   "tag": "A",
+   "t": "Marketing",
+   "href": "https://www.clay.com/clay-for-marketing",
+   "top": 177,
+   "left": 820
+  },
+  {
+   "tag": "A",
+   "t": "Sales",
+   "href": "https://www.clay.com/clay-for-sales",
+   "top": 206,
+   "left": 820
+  },
+  {
+   "tag": "A",
+   "t": "Enterprise",
+   "href": "https://www.clay.com/enterprise",
+   "top": 236,
+   "left": 820
+  },
+  {
+   "tag": "A",
+   "t": "Startup",
+   "href": "https://www.clay.com/clay-for-startups",
+   "top": 265,
+   "left": 820
+  },
+  {
+   "tag": "A",
+   "t": "INTERCOM Grew their outbound-sourced pipeline by +140%",
+   "href": "https://www.clay.com/customers/intercom",
+   "top": 125,
+   "left": 1073
+  },
+  {
+   "tag": "A",
+   "t": "University",
+   "href": "https://university.clay.com/",
+   "top": 147,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Guides",
+   "href": "https://www.clay.com/guides",
+   "top": 177,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Livestreams",
+   "href": "https://www.clay.com/livestreams",
+   "top": 206,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Cohort live classes",
+   "href": "https://university.clay.com/cohorts",
+   "top": 236,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Clay community",
+   "href": "https://community.clay.com/",
+   "top": 147,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "Slack",
+   "href": "https://www.clay.com/slack-community",
+   "top": 177,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "Live events",
+   "href": "https://luma.com/claylive?k=c",
+   "top": 206,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "Startup program",
+   "href": "https://www.clay.com/clay-for-startups",
+   "top": 236,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "Campus ambassadors",
+   "href": "https://www.clay.com/clay-campus-ambassadors",
+   "top": 265,
+   "left": 313
+  },
+  {
+   "tag": "A",
+   "t": "Find Clay experts",
+   "href": "https://www.clay.com/experts",
+   "top": 147,
+   "left": 566
+  },
+  {
+   "tag": "A",
+   "t": "GTM Engineer job board",
+   "href": "https://www.clay.com/job-board",
+   "top": 177,
+   "left": 566
+  },
+  {
+   "tag": "A",
+   "t": "Become a partner",
+   "href": "https://www.clay.com/partners",
+   "top": 147,
+   "left": 820
+  },
+  {
+   "tag": "A",
+   "t": "Solution partners",
+   "href": "https://www.clay.com/partners/solutions",
+   "top": 177,
+   "left": 820
+  },
+  {
+   "tag": "A",
+   "t": "Integration partners",
+   "href": "https://www.clay.com/partners/integrations",
+   "top": 206,
+   "left": 820
+  },
+  {
+   "tag": "A",
+   "t": "Private Equity",
+   "href": "https://www.clay.com/clay-for-private-equity",
+   "top": 236,
+   "left": 820
+  },
+  {
+   "tag": "A",
+   "t": "CLAY COMMUNITY In Nigeria, she built a life where money wouldn’t decide",
+   "href": "https://www.clay.com/blog/sandra-uche",
+   "top": 125,
+   "left": 1073
+  },
+  {
+   "tag": "A",
+   "t": "About",
+   "href": "https://www.clay.com/about",
+   "top": 147,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Careers",
+   "href": "https://www.clay.com/careers",
+   "top": 189,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Open roles",
+   "href": "https://www.clay.com/jobs",
+   "top": 231,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Blog",
+   "href": "https://www.clay.com/blog",
+   "top": 273,
+   "left": 60
+  },
+  {
+   "tag": "A",
+   "t": "Contact",
+   "href": "https://www.clay.com/contact",
+   "top": 147,
+   "left": 398
+  },
+  {
+   "tag": "A",
+   "t": "Press",
+   "href": "https://www.clay.com/press",
+   "top": 189,
+   "left": 398
+  },
+  {
+   "tag": "A",
+   "t": "LinkedIn",
+   "href": "https://www.linkedin.com/company/grow-with-clay/",
+   "top": 147,
+   "left": 735
+  },
+  {
+   "tag": "A",
+   "t": "YouTube",
+   "href": "https://www.youtube.com/@GrowWithClay",
+   "top": 189,
+   "left": 735
+  },
+  {
+   "tag": "A",
+   "t": "ARTICLE – NY TIMES Clay allows employees to sell shares at a $5b valuation.",
+   "href": "https://www.nytimes.com/2026/01/28/business/dealbook/clay-start-up-tender-offers.html?unlocked_article_code=1.H1A.LBNX.YbS98P3kIG8Q&smid=url-share",
+   "top": 125,
+   "left": 1073
+  },
+  {
+   "tag": "A",
+   "t": "Start free trial",
+   "href": "https://app.clay.com/signup?source=website&su=c44eabf3-547f-43d9-bfcc-19879b884d1c",
+   "top": 725,
+   "left": 970
+  },
+  {
+   "tag": "A",
+   "t": "Get a demo",
+   "href": "https://www.clay.com/demo",
+   "top": 725,
+   "left": 1155
+  }
+ ],
+ "ps": [
+  {
+   "t": "DATA INFRASTRUCTURE",
+   "top": 125
+  },
+  {
+   "t": "Data marketplace",
+   "top": 200
+  },
+  {
+   "t": "Signals and Intent",
+   "top": 242
+  },
+  {
+   "t": "Agent plugin CLI/API",
+   "top": 242
+  },
+  {
+   "t": "Give reps the best prospecting data in their AI tools",
+   "top": 295
+  },
+  {
+   "t": "DATA FOUNDATIONS",
+   "top": 125
+  },
+  {
+   "t": "Territory planning",
+   "top": 211
+  },
+  {
+   "t": "PIPELINE GENERATION",
+   "top": 125
+  },
+  {
+   "t": "Automated inbound",
+   "top": 181
+  },
+  {
+   "t": "REP PRODUCTIVITY",
+   "top": 125
+  },
+  {
+   "t": "Account research",
+   "top": 181
+  },
+  {
+   "t": "Grew their outbound-sourced pipeline by +140%",
+   "top": 295
+  },
+  {
+   "t": "LEARN TO BUILD ON CLAY",
+   "top": 125
+  },
+  {
+   "t": "Cohort live classes",
+   "top": 240
+  }
+ ],
+ "vids": [
+  {
+   "vis": true,
+   "src": "https://assets.clayrun.dev/Hero%2006-02%20Lossy%200001-0240.mp4",
+   "autoplay": true,
+   "loop": true,
+   "muted": true,
+   "top": 0,
+   "paused": false
+  },
+  {
+   "vis": false,
+   "src": "",
+   "autoplay": true,
+   "loop": true,
+   "muted": true,
+   "top": 2979,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "",
+   "autoplay": true,
+   "loop": true,
+   "muted": true,
+   "top": 3702,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "",
+   "autoplay": true,
+   "loop": true,
+   "muted": true,
+   "top": 4425,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "",
+   "autoplay": true,
+   "loop": true,
+   "muted": true,
+   "top": 5148,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "",
+   "autoplay": true,
+   "loop": true,
+   "muted": true,
+   "top": 6191,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "https://assets.clayrun.dev/Clay-Hero%20(3)%20(1).mp4",
+   "autoplay": true,
+   "loop": true,
+   "muted": true,
+   "top": 7036,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "https://assets.clayrun.dev/euro_case_study_final_v1_(2)_(1)_v1%20(1080p).mp4",
+   "autoplay": false,
+   "loop": false,
+   "muted": false,
+   "top": 7036,
+   "paused": true
+  },
+  {
+   "vis": false,
+   "src": "",
+   "autoplay": true,
+   "loop": true,
+   "muted": true,
+   "top": 8961,
+   "paused": true
+  }
+ ],
+ "iframes": [],
+ "imgs": [
+  {
+   "alt": "",
+   "src": "1477f2c24a826836f969afe/6a9000b05f737fe02f82088d_Default.svg",
+   "top": 8
+  },
+  {
+   "alt": "Clay logo, go to homepage",
+   "src": "6f969afe/6778506d788ebf16fef48551_Clay%20primary%20logo.avif",
+   "top": 61
+  },
+  {
+   "alt": "Audiences",
+   "src": "7f2c24a826836f969afe/6998ccf18dcd166ee8066e89_Audiences.webp",
+   "top": 158
+  },
+  {
+   "alt": "Data marketplace",
+   "src": "c24a826836f969afe/66968abc88fb18290e684672_3d-icon-wire.avif",
+   "top": 200
+  },
+  {
+   "alt": "Signals and Intent",
+   "src": "58afbc01799d0_Signals%2C%20satellite%20dish%2C%20monitor.png",
+   "top": 242
+  },
+  {
+   "alt": "Waterfall",
+   "src": "c24a826836f969afe/66968abca946b59ed38891ca_3d-icon-wave.avif",
+   "top": 284
+  },
+  {
+   "alt": "Claygents",
+   "src": "6836f969afe/6a6c429ed4f8b16b3583f413_Claygent_Claymation.png",
+   "top": 158
+  },
+  {
+   "alt": "Account Agents",
+   "src": "f2c24a826836f969afe/6a8dd3d3b04433679c85d4e8_Automation.avif",
+   "top": 200
+  },
+  {
+   "alt": "Agent plugin CLI/API",
+   "src": "26836f969afe/6696c285d30643c440dfd33e_3d-icon-changelog.avif",
+   "top": 242
+  },
+  {
+   "alt": "MCP for reps",
+   "src": "c24a826836f969afe/66968abccc0d2ccc96dada4d_3d-icon-link.avif",
+   "top": 284
+  },
+  {
+   "alt": "Workflows",
+   "src": "7f2c24a826836f969afe/6a7a815b4a7453c17df51d80_Workflows.avif",
+   "top": 158
+  },
+  {
+   "alt": "Functions",
+   "src": "77f2c24a826836f969afe/6a6c469c8f52cf0ced000fd9_functions.png",
+   "top": 200
+  },
+  {
+   "alt": "AI formatting",
+   "src": "c24a826836f969afe/6696c285a5ca1580d2949393_3d-icon-data.avif",
+   "top": 242
+  },
+  {
+   "alt": "Ads",
+   "src": "2c24a826836f969afe/6994e3f966056e5cbb08f379_ads-icon%201.png",
+   "top": 158
+  },
+  {
+   "alt": "Sequencer",
+   "src": "61477f2c24a826836f969afe/6998ccf1b91a6faab45a7707_image.webp",
+   "top": 200
+  },
+  {
+   "alt": "",
+   "src": "m/61702af2e3966e09c4101538/6a591a9e3e484c06e9ad7def_MCP.avif",
+   "top": 125
+  },
+  {
+   "alt": "",
+   "src": "3966e09c4101538/69a8cff4ee3cb50deaa6b048_intercom-p-500.avif",
+   "top": 125
+  },
+  {
+   "alt": "",
+   "src": "/699c92ab9bfd079f17f3fdb2_Untitled%20design%20(1)-p-500.avif",
+   "top": 125
+  },
+  {
+   "alt": "About",
+   "src": "a826836f969afe/69a1ebcb63149318ee33f742_Heart%20Tricolor.png",
+   "top": 158
+  },
+  {
+   "alt": "Careers",
+   "src": "9afe/69a1ebcb6dc3754e5ab88059_Signal%2C%20Title%20Change.png",
+   "top": 200
+  },
+  {
+   "alt": "Open roles",
+   "src": "a826836f969afe/69a1ebcb7b4979434a400756_Signal%2C%20Jobs.png",
+   "top": 242
+  },
+  {
+   "alt": "Blog",
+   "src": "77f2c24a826836f969afe/6760a5af049f68ed0b62f2d5_startups.avif",
+   "top": 284
+  },
+  {
+   "alt": "Contact",
+   "src": "477f2c24a826836f969afe/69a1ebcb5b7f83e761333953_Chat%20B.png",
+   "top": 158
+  },
+  {
+   "alt": "Press",
+   "src": "a826836f969afe/69a1ebcb63437533c9dd4fa6_Signal%2C%20News.png",
+   "top": 200
+  },
+  {
+   "alt": "LinkedIn",
+   "src": "477f2c24a826836f969afe/69a1ebd1f749bdabf75d1cd6_Linkedin.png",
+   "top": 158
+  },
+  {
+   "alt": "YouTube",
+   "src": "1477f2c24a826836f969afe/69a1ebd08d0559b33d8f2202_Youtube.png",
+   "top": 200
+  },
+  {
+   "alt": "",
+   "src": "9c4101538/69a1f1f3a080096c6cf4cbfa_company-ads-v0-p-500.avif",
+   "top": 125
+  },
+  {
+   "alt": "",
+   "src": "26836f969afe/6a712716b1f02fb1be7cbf35_Frame%202147261726.svg",
+   "top": 790
+  },
+  {
+   "alt": "",
+   "src": "26836f969afe/6a7127165d8c29c07402f522_Frame%202147261727.svg",
+   "top": 788
+  },
+  {
+   "alt": "",
+   "src": "26836f969afe/6a7127164cd37e26c439e22f_Frame%202147261728.svg",
+   "top": 790
+  },
+  {
+   "alt": "Colorful playful contraption with tubes, balls, magnets, and",
+   "src": "36f969afe/6a231084ed9c142b6d5c41c6_hero-still_v3-p-1600.avif",
+   "top": -54
+  }
+ ],
+ "bodyHeight": 10255,
+ "forms": [],
+ "status": 200,
+ "url": "https://www.clay.com/",
+ "vp": "desktop"
+}
