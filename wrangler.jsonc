@@ -5,7 +5,9 @@
   "name": "alterpedro",
   "main": "src/worker.ts",
   "compatibility_date": "2026-09-01",
-  "build": { "command": "npm run build" },
+  // BOOKING_URL is public (not a secret). It defaults to the discovery link here and can be overridden from the shell.
+  // The PRODUCTION=1 guard in the build still fails if it is unset, "#book" or not a cal.com link (POSIX shell syntax).
+  "build": { "command": "BOOKING_URL=${BOOKING_URL:-https://cal.com/alter-pedro-discovery} npm run build" },
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",

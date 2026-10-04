@@ -13,7 +13,9 @@
     "test": "vitest run",
     "gate": "vitest run tests/gate.test.ts",
     "preview": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "e4:smoke": "vitest run -c vitest.e4.config.ts tests/e4/smoke.run.ts",
+    "e4": "vitest run -c vitest.e4.config.ts tests/e4/e4.run.ts"
   },
   "devDependencies": {
     "astro": "^7.3.5",

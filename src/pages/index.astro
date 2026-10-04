@@ -14,11 +14,6 @@ const variant = (process.env.HERO_VARIANT ?? 'A').toUpperCase();
 if (!(variant in HEADLINES)) throw new Error(`HERO_VARIANT must be A or B, got "${variant}"`);
 const headline = HEADLINES[variant as 'A' | 'B'];
 
-// Sprint price: placeholder until the human supplies it. Build FAILS if it is still a placeholder when PRODUCTION=1.
-const price = process.env.SPRINT_PRICE ?? '[PRICE]';
-if (process.env.PRODUCTION === '1' && price.includes('[PRICE]')) {
-  throw new Error('PRODUCTION=1 but the Sprint price is still the "[PRICE]" placeholder. Set SPRINT_PRICE.');
-}
 // Booking link: hosted scheduler URL not chosen yet (architecture E-A4). Placeholder #book.
 const bookHref = process.env.BOOKING_URL || '#book';
 if (process.env.PRODUCTION === '1') {
@@ -26,6 +21,11 @@ if (process.env.PRODUCTION === '1') {
   if (problem) throw new Error(`PRODUCTION=1 but ${problem}. Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.`);
 }
 
+// Sprint price: placeholder until the human supplies it. Build FAILS if it is still a placeholder when PRODUCTION=1.
+const price = process.env.SPRINT_PRICE ?? '[PRICE]';
+if (process.env.PRODUCTION === '1' && price.includes('[PRICE]')) {
+  throw new Error('PRODUCTION=1 but the Sprint price is still the "[PRICE]" placeholder. Set SPRINT_PRICE.');
+}
 // Proof: real case studies only. Empty = the whole block is omitted from the page. Never add invented ones.
 const cases: { problem: string; discovered: string; decided: string; built: string; changed: string }[] = [];
 ---

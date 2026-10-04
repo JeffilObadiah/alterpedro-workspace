@@ -19,10 +19,10 @@ Requires **Node >= 22.12** (Astro 7, Vitest 5 and Wrangler 4 need it).
 ## Deploy (single command)
 
 ```
-PRODUCTION=1 SPRINT_PRICE="<the real price>" BOOKING_URL="https://cal.com/<handle>/<event>" npm run deploy
+PRODUCTION=1 SPRINT_PRICE="<the real price>" npm run deploy
 ```
 
-`wrangler.jsonc` has `build.command = "npm run build"`, so this builds, checks and uploads in one step. Before the first deploy, once:
+`wrangler.jsonc` has a `build.command` that runs `npm run build` with `BOOKING_URL` defaulting to `https://cal.com/alter-pedro-discovery` (public, not a secret; override by setting `BOOKING_URL` in the shell; POSIX shell syntax), so this builds, checks and uploads in one step. `.env.example` lists the build-time settings. Before the first deploy, once:
 
 ```
 npx wrangler login                       # human, interactive

@@ -30,6 +30,7 @@ function run(dir: string, env: Record<string, string> = {}) {
 }
 
 describe('bookingProblem()', () => {
+  it('accepts the real booking link', () => expect(bookingProblem('https://cal.com/alter-pedro-discovery')).toBeNull());
   it('accepts cal.com and app.cal.com links', () => {
     expect(bookingProblem('https://cal.com/alter/20min')).toBeNull();
     expect(bookingProblem('https://app.cal.com/alter/20min')).toBeNull();

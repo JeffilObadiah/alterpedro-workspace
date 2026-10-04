@@ -129,3 +129,73 @@ Interaction check (puppeteer, wrangler dev, chip click + 7 turns, at 360, 412, 7
 - Under `PRODUCTION=1` the build now FAILS (not warns) when the link is `#book`, `BOOKING_URL` is unset/empty, or it does not start with `https://cal.com/` or `https://app.cal.com/` with a path after (`scripts/booking.mjs`). Enforced at Astro render and again on the built output (built page must link to exactly `BOOKING_URL`). Non-production builds unaffected.
 - Checked by hand: `PRODUCTION=1 SPRINT_PRICE=x npm run build` -> `Error: PRODUCTION=1 but BOOKING_URL is not set`, exit 1. Automated: `tests/check-build.test.ts` (unset, `#book`, calendly, http://, host look-alikes `cal.com.evil.example`, empty path, quotes/spaces; passes for cal.com and app.cal.com; dev build with `#book` passes; `[PRICE]` and chip failures too).
 - `npm test` now: 5 files, 89 tests passed.
+
+---
+
+# Follow-up 2: booking link set to https://cal.com/alter-pedro-discovery (2026-10-04, IST)
+
+- `BOOKING_URL=https://cal.com/alter-pedro-discovery` is set in `.env.example` and as the default inside `wrangler.jsonc` `build.command` (`BOOKING_URL=${BOOKING_URL:-https://cal.com/alter-pedro-discovery} npm run build`, POSIX shell). It is public, not a secret. The site reads it from the environment at build time (`process.env.BOOKING_URL`).
+- The guard is unchanged and still strict: a plain `npm run build` with `PRODUCTION=1` and no `BOOKING_URL` in the shell still fails; only the wrangler deploy path supplies the default. Dev builds still use the `#book` placeholder.
+- `[PRICE]` still blocks a production build until the human gives a price. `TEST-ONLY` below is a dummy used purely to show the booking check passing; it must never be deployed.
+- Tests: `npm test` -> 6 files, 102 tests passed (added: real URL accepted).
+
+Captured output (real, from `/tmp/booking-evidence.txt`; progress lines trimmed to the error/OK lines):
+
+```
+=== (a) PRODUCTION=1 with BOOKING_URL unset, or #book: must FAIL (price supplied so only the booking rule is tested) ===
+$ env -u BOOKING_URL PRODUCTION=1 SPRINT_PRICE=TEST-ONLY npm run build
+15:52:42   ├─ /index.html15:52:42 [ERROR] Error: PRODUCTION=1 but BOOKING_URL is not set. Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.
+> node scripts/gen-tokens.mjs && astro build && node scripts/check-build.mjs
+PRODUCTION=1 but BOOKING_URL is not set. Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.
+[exit 1]
+
+$ PRODUCTION=1 SPRINT_PRICE=TEST-ONLY BOOKING_URL="#book" npm run build
+15:52:43   ├─ /index.html15:52:43 [ERROR] Error: PRODUCTION=1 but booking link is still the "#book" placeholder. Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.
+> node scripts/gen-tokens.mjs && astro build && node scripts/check-build.mjs
+PRODUCTION=1 but booking link is still the "#book" placeholder. Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.
+[exit 1]
+
+=== (b) PRODUCTION=1 with the real cal.com URL ===
+--- b1: exact user case, no price yet -> booking rule passes, build stops on [PRICE] ---
+$ PRODUCTION=1 BOOKING_URL=https://cal.com/alter-pedro-discovery npm run build
+15:52:44   ├─ /index.html15:52:44 [ERROR] Error: PRODUCTION=1 but the Sprint price is still the "[PRICE]" placeholder. Set SPRINT_PRICE.
+> node scripts/gen-tokens.mjs && astro build && node scripts/check-build.mjs
+PRODUCTION=1 but the Sprint price is still the "[PRICE]" placeholder. Set SPRINT_PRICE.
+[exit 1]
+
+--- b2: same URL with a dummy price TEST-ONLY (proves the booking check passes end to end; dummy price is NOT for deploy) ---
+$ PRODUCTION=1 SPRINT_PRICE=TEST-ONLY BOOKING_URL=https://cal.com/alter-pedro-discovery npm run build
+15:52:45 [build] Complete!
+> node scripts/gen-tokens.mjs && astro build && node scripts/check-build.mjs
+check-build: OK
+check-build: accent usages = 3 (html 2: <a class="accent small"> in index.html, <span class="marker accent"> in index.html; css 1: focus ring (:focus-visible)); max 3
+[exit 0]
+
+href="https://cal.com/alter-pedro-discovery"
+=== (c) non-cal.com URLs: must FAIL ===
+$ PRODUCTION=1 SPRINT_PRICE=TEST-ONLY BOOKING_URL=https://calendly.com/alter-pedro-discovery npm run build
+15:52:46   ├─ /index.html15:52:46 [ERROR] Error: PRODUCTION=1 but BOOKING_URL must start with https://cal.com/ or https://app.cal.com/ (got "https://calendly.com/alter-pedro-discovery"). Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.
+> node scripts/gen-tokens.mjs && astro build && node scripts/check-build.mjs
+PRODUCTION=1 but BOOKING_URL must start with https://cal.com/ or https://app.cal.com/ (got "https://calendly.com/alter-pedro-discovery"). Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.
+[exit 1]
+
+$ PRODUCTION=1 SPRINT_PRICE=TEST-ONLY BOOKING_URL=https://cal.com.evil.example/alter-pedro-discovery npm run build
+15:52:47   ├─ /index.html15:52:47 [ERROR] Error: PRODUCTION=1 but BOOKING_URL must start with https://cal.com/ or https://app.cal.com/ (got "https://cal.com.evil.example/alter-pedro-discovery"). Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.
+> node scripts/gen-tokens.mjs && astro build && node scripts/check-build.mjs
+PRODUCTION=1 but BOOKING_URL must start with https://cal.com/ or https://app.cal.com/ (got "https://cal.com.evil.example/alter-pedro-discovery"). Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.
+[exit 1]
+
+=== dev build, nothing set: unaffected ===
+$ npm run build
+15:52:48 [build] Complete!
+> node scripts/gen-tokens.mjs && astro build && node scripts/check-build.mjs
+check-build: OK
+check-build: accent usages = 3 (html 2: <a class="accent small"> in index.html, <span class="marker accent"> in index.html; css 1: focus ring (:focus-visible)); max 3
+[exit 0]
+
+$ PRODUCTION=1 npx wrangler deploy --dry-run        (via wrangler's build.command, no price; NOT a deploy)
+-> Running custom build `BOOKING_URL=${BOOKING_URL:-https://cal.com/alter-pedro-discovery} npm run build` failed
+-> Error: PRODUCTION=1 but the Sprint price is still the "[PRICE]" placeholder. Set SPRINT_PRICE.   (booking rule passed; only the price stops it)
+$ PRODUCTION=1 SPRINT_PRICE=TEST-ONLY npx wrangler deploy --dry-run
+-> check-build: OK ; Total Upload: 23.06 KiB / gzip: 8.29 KiB ; --dry-run: exiting now.
+```

@@ -4,13 +4,27 @@ import { AREAS, MAX_TURNS, type Area, type ProblemModel } from './schema';
 export type Message = { role: 'system' | 'user'; content: string };
 export type Provider =
   | { kind: 'mock' }
-  | { kind: 'real'; apiKey?: string; endpoint?: string };
+  | { kind: 'deepseek'; apiKey?: string; endpoint?: string; model?: string };
 
-export interface ProviderEnv { MODEL_PROVIDER?: string; MODEL_API_KEY?: string; MODEL_ENDPOINT?: string }
+export interface ProviderEnv {
+  MODEL_PROVIDER?: string; // "mock" (default) | "deepseek" ("real" is accepted as an alias for deepseek)
+  DEEPSEEK_API_KEY?: string; // secret. Never log it, never put it in a file. `wrangler secret put DEEPSEEK_API_KEY`
+  MODEL_API_KEY?: string; // generic alias for the key (architecture E-A5)
+  MODEL_ENDPOINT?: string; // default https://api.deepseek.com (must be https)
+  MODEL_NAME?: string; // default deepseek-flash
+}
 
-/** Default is MOCK (deterministic, offline). `real` only if MODEL_PROVIDER=real. */
+export const DEEPSEEK_DEFAULT_ENDPOINT = 'https://api.deepseek.com';
+export const DEEPSEEK_DEFAULT_MODEL = 'deepseek-flash'; // DeepSeek-V4.1-Flash, https://api-docs.deepseek.com/quick_start/pricing
+const REQUEST_TIMEOUT_MS = 25_000;
+const MAX_OUTPUT_TOKENS = 700;
+const TEMPERATURE = 0.3; // fixed design choice, set before any E4 measurement and not tuned afterwards
+
+/** Default is MOCK (deterministic, offline). Real calls only if MODEL_PROVIDER=deepseek (or the alias "real"). */
 export function providerFromEnv(env: ProviderEnv): Provider {
-  if (env.MODEL_PROVIDER === 'real') return { kind: 'real', apiKey: env.MODEL_API_KEY, endpoint: env.MODEL_ENDPOINT };
+  if (env.MODEL_PROVIDER === 'deepseek' || env.MODEL_PROVIDER === 'real') {
+    return { kind: 'deepseek', apiKey: env.DEEPSEEK_API_KEY || env.MODEL_API_KEY, endpoint: env.MODEL_ENDPOINT, model: env.MODEL_NAME };
+  }
   return { kind: 'mock' };
 }
 
@@ -19,16 +33,53 @@ export async function callModel(provider: Provider, messages: Message[]): Promis
   switch (provider.kind) {
     case 'mock':
       return mockModel(messages);
-    case 'real':
-      return realModel(provider, messages);
+    case 'deepseek':
+      return deepseekModel(provider, messages);
   }
 }
 
-// TODO(E4): implement the real provider. Send `messages` to provider.endpoint with provider.apiKey, request JSON-only output,
-// no tools, no retrieval, a short timeout, and return the reply text. Measure cost_per_scan here. NOT IMPLEMENTED YET:
-// until then MODEL_PROVIDER=real always throws, and the Worker answers with the fixed fallback question.
-async function realModel(_provider: Extract<Provider, { kind: 'real' }>, _messages: Message[]): Promise<string> {
-  throw new Error('NOT_IMPLEMENTED: real model provider (task E4)');
+/**
+ * DeepSeek, OpenAI-format Chat Completions: POST {endpoint}/chat/completions.
+ * - JSON mode: response_format {"type":"json_object"} (the system prompt contains the word JSON and an example shape, as the docs require).
+ * - Thinking OFF: top-level {"thinking":{"type":"disabled"}} (https://api-docs.deepseek.com/guides/thinking_mode). No reasoning_effort.
+ * - Cache friendliness: messages[0] is always the identical, stable system prompt; visitor data is in the LAST message only.
+ * - No tools, no retrieval, no streaming, bounded output, 25 s timeout.
+ * Errors thrown here carry only a status code or a fixed word, never the key, headers or response body.
+ */
+async function deepseekModel(p: Extract<Provider, { kind: 'deepseek' }>, messages: Message[]): Promise<string> {
+  const base = (p.endpoint || DEEPSEEK_DEFAULT_ENDPOINT).replace(/\/+$/, '');
+  if (!p.apiKey) throw new Error('provider_not_configured');
+  if (!base.startsWith('https://')) throw new Error('provider_endpoint_must_be_https');
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), REQUEST_TIMEOUT_MS);
+  try {
+    const res = await fetch(`${base}/chat/completions`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', authorization: `Bearer ${p.apiKey}` },
+      body: JSON.stringify({
+        model: p.model || DEEPSEEK_DEFAULT_MODEL,
+        messages,
+        response_format: { type: 'json_object' },
+        thinking: { type: 'disabled' },
+        temperature: TEMPERATURE,
+        max_tokens: MAX_OUTPUT_TOKENS,
+        stream: false,
+      }),
+      signal: ctl.signal,
+    });
+    if (!res.ok) throw new Error(`provider_http_${res.status}`);
+    const data = (await res.json()) as { choices?: { message?: { content?: unknown }; finish_reason?: string }[] };
+    const choice = data.choices?.[0];
+    if (!choice || typeof choice.message?.content !== 'string') throw new Error('provider_bad_response');
+    if (choice.finish_reason === 'length') throw new Error('provider_truncated');
+    return choice.message.content;
+  } catch (e) {
+    if (e instanceof Error && e.name === 'AbortError') throw new Error('provider_timeout');
+    if (e instanceof Error && e.message.startsWith('provider_')) throw e;
+    throw new Error('provider_network_error');
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 // ---------------------------------------------------------------------------------------------
