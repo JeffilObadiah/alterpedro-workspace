@@ -19,7 +19,7 @@ Requires **Node >= 22.12** (Astro 7, Vitest 5 and Wrangler 4 need it).
 ## Deploy (single command)
 
 ```
-PRODUCTION=1 SPRINT_PRICE="<the real price>" npm run deploy
+PRODUCTION=1 SPRINT_PRICE="<the real price>" BOOKING_URL="https://cal.com/<handle>/<event>" npm run deploy
 ```
 
 `wrangler.jsonc` has `build.command = "npm run build"`, so this builds, checks and uploads in one step. Before the first deploy, once:
@@ -29,7 +29,7 @@ npx wrangler login                       # human, interactive
 npx wrangler secret put SCAN_HMAC_SECRET # a long random string
 ```
 
-With `PRODUCTION=1` the build **fails** if the Sprint price is still `[PRICE]`. It also prints a warning (not a failure) if the booking link is still `#book`; set `BOOKING_URL`.
+With `PRODUCTION=1` the build **fails** if the Sprint price is still `[PRICE]`, or if the booking link is still `#book`, `BOOKING_URL` is unset, or `BOOKING_URL` does not start with `https://cal.com/` or `https://app.cal.com/` (with a path after it). The rule lives in `scripts/booking.mjs` and is enforced twice: when Astro renders the page, and by `scripts/check-build.mjs` on the built output. Dev and non-production builds are unaffected (`#book` stays a placeholder).
 
 ## Rollback
 
@@ -41,8 +41,8 @@ Each deploy is a Worker version. To go back: `npx wrangler versions list` then `
 |---|---|
 | `HERO_VARIANT=A` (default) / `B` | Headline test. A: "Describe the problem. Get it back in writing, in 3 minutes." B: "You bring the problem. We'll tell you what it actually is." |
 | `SPRINT_PRICE` | Replaces `[PRICE]` in the example summary |
-| `BOOKING_URL` | Replaces the `#book` placeholder link |
-| `PRODUCTION=1` | Build fails if `[PRICE]` remains |
+| `BOOKING_URL` | Replaces the `#book` placeholder link. Under `PRODUCTION=1` it is required and must be a `https://cal.com/…` or `https://app.cal.com/…` link |
+| `PRODUCTION=1` | Build fails if `[PRICE]` remains or the booking link is missing / not cal.com |
 
 ## Design tokens and the build checks
 
@@ -52,11 +52,19 @@ Each deploy is a Worker version. To go back: `npx wrangler versions list` then `
 - wine accent is used more than 3 times on the built page (counts: HTML elements with class `accent`, the focus ring once, any other CSS rule that references an accent token);
 - the primary button is not ink (`--color-neutral-900`) or uses the accent;
 - red/danger tokens are used anywhere (errors use amber via `--color-error-*`);
-- `[PRICE]` remains when `PRODUCTION=1`.
+- `[PRICE]` remains when `PRODUCTION=1`;
+- `PRODUCTION=1` and the booking link is `#book`, unset, or not a cal.com link (tested in `tests/check-build.test.ts`);
+- the hero does not have 6 to 8 example chips, or a chip phrase is not found verbatim in the research file (`tests/fixtures/research.md`, copy of `ALTERPEDRO_RESEARCH.md`), or a chip uses the accent.
 
 ## Page
 
 One page, `src/pages/index.astro`, six blocks: hero (real `<form>`), "What you get back" (labelled Example), stated vs real (labelled Examples), method, proof (omitted from the HTML until `cases` in the page frontmatter holds a REAL case), final CTA + Labs line. The only JS is the `<alter-scan>` custom element (`src/scripts/scan.js`, about 2.1 KB, inlined). Without JS the form posts to `/api/scan/turn` and the Worker answers with a plain HTML page (escaped text) carrying the signed state in a hidden field, so the Scan also works with JS disabled.
+
+## Example chips and layout stability
+
+- Chips (`src/data/chips.json`, rendered in `Scan.astro`) fill the textarea and focus it. Each text is an exact string from the research file section 3 (autocomplete or forum wording). Components v1.1 has no chip component, so a chip is the **ghost button, size sm** (32px visual, 44px hit area), ink, never wine.
+- Chips are server-rendered, so their space is reserved from first paint. With JS blocked they are invisible but keep their space; with scripting switched off in the browser they collapse.
+- The Scan area (question log + live panel + "I don't know") sits in a fixed-height `.scan-stage` that is reserved from first paint, so nothing moves when it fills. Cause of the earlier CLS 0.029: see BUILD_REPORT.md.
 
 ## Worker (`src/worker.ts`)
 

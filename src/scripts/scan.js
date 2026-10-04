@@ -9,12 +9,23 @@ class AlterScan extends HTMLElement {
     this.model = null;
     this.turn = 0;
     this.busy = false;
+    this.setAttribute('data-ready', ''); // reveals the chips (CSS keeps them invisible, but space-reserved, until the script has run)
     this.form.addEventListener('submit', (e) => { e.preventDefault(); this.send(false); });
     const dk = document.createElement('button');
-    dk.type = 'button'; dk.className = 'btn btn-ghost'; dk.textContent = "I don't know"; dk.hidden = true;
+    dk.type = 'button'; dk.className = 'btn btn-ghost'; dk.textContent = "I don't know"; dk.style.visibility = 'hidden';
     dk.addEventListener('click', () => this.send(true));
-    this.form.querySelector('.row').insertBefore(dk, this.form.querySelector('.row a'));
+    // The button lives in the reserved stage (not the hero row) so showing it can never move the hero.
+    this.log.before(dk);
     this.dk = dk;
+    // Example chips: fill the textarea and focus it. Chips are plain buttons in the HTML; no-JS hides them.
+    this.form.addEventListener('click', (e) => {
+      const chip = e.target.closest && e.target.closest('[data-chip]');
+      if (!chip) return;
+      const ta = this.form.elements.answer;
+      ta.value = chip.dataset.chip;
+      ta.focus();
+      ta.setSelectionRange(ta.value.length, ta.value.length);
+    });
   }
   async send(dontKnow) {
     if (this.busy) return;
@@ -35,14 +46,13 @@ class AlterScan extends HTMLElement {
       this.model = data.model; this.turn = data.model.turn;
       this.render(data, dontKnow ? "I don't know" : answer);
       ta.value = '';
-      this.dk.hidden = !!data.done;
-      start.textContent = 'Send';
-      start.hidden = !!data.done; ta.hidden = !!data.done; this.form.querySelector('label').hidden = !!data.done;
-      if (!data.done) ta.focus();
+      this.dk.style.visibility = data.done ? 'hidden' : '';
+      // The label stays "Start": swapping it for "Send" changed the button width by 3px and made the hero row wrap (layout shift).
+      if (data.done) { ta.disabled = true; this.done = true; } else ta.focus();
     } catch (err) {
       this.showError();
     } finally {
-      this.busy = false; start.disabled = false;
+      this.busy = false; start.disabled = !!this.done;
     }
   }
   render(data, said) {
@@ -54,7 +64,7 @@ class AlterScan extends HTMLElement {
     for (const li of this.panel.querySelectorAll('[data-area]')) {
       li.dataset.covered = String(!!(data.model.areas[li.dataset.area] || {}).covered);
     }
-    this.dk.hidden = false;
+    this.dk.style.visibility = data.done ? 'hidden' : '';
   }
   showError() {
     this.log.hidden = false;

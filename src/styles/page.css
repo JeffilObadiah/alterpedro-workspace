@@ -75,7 +75,7 @@ dt { font-weight: 500; }
 dd { margin: 0 0 var(--space-lg); color: var(--color-text-secondary); }
 
 /* Scan (enhanced state) */
-.scan-log { margin-top: var(--space-xl); }
+.scan-log { margin-top: var(--space-xl); } /* stage overrides */
 .scan-log p { white-space: pre-wrap; overflow-wrap: anywhere; }
 .scan-echo { color: var(--color-text-secondary); }
 .scan-question { font-weight: 500; margin-top: var(--space-sm); }
@@ -87,3 +87,19 @@ footer { max-width: var(--container-content); margin: 0 auto; padding: var(--spa
 @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
 .cards + p { margin-top: var(--space-lg); }
 .card > .small + .example-part { margin-top: var(--space-lg); }
+
+/* ---- Chips: components v1.1 has no chip/pill component, so a chip is the ghost button at size sm (32px visual, 44px hit area). Ink, never wine. ---- */
+[hidden] { display: none !important; } /* author display rules (.btn) must not defeat the hidden attribute: that caused the 0.029 CLS */
+.btn-sm { min-height: 32px; padding: var(--space-xs) var(--space-sm); font-size: var(--type-small-size); line-height: var(--type-small-line); gap: var(--space-xs); position: relative; text-align: left; }
+.btn-sm::before { content: ""; position: absolute; inset: -6px 0; } /* extends the touch target to 44px */
+.btn-ghost:active { background: var(--color-neutral-100); }
+.chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md) var(--space-sm); margin-top: var(--space-md); }
+.chips-label { margin-right: var(--space-xs); }
+alter-scan:not([data-ready]) .chips { visibility: hidden; } /* no script ran (blocked by CSP/extension): chips would be inert, hide them but keep the space */
+@media (scripting: none) { .chips, .scan-stage { display: none; } } /* JS switched off in the browser: collapse both */
+
+/* ---- Reserved space for the Scan stage (question log + live panel): fixed height, the log scrolls inside it, so nothing below ever moves. ---- */
+.scan-stage { height: var(--stage-height, 34rem); display: flex; flex-direction: column; margin-top: var(--space-xl); overflow: hidden; }
+.scan-stage .scan-log { margin-top: 0; height: 11rem; overflow-y: auto; flex: none; } /* fixed, so the panel below never moves as answers arrive */
+.scan-stage .scan-panel { margin-top: var(--space-md); flex: none; }
+.scan-stage > .btn { align-self: flex-start; margin-top: var(--space-md); flex: none; }

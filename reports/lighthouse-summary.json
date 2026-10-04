@@ -1,61 +1,82 @@
 {
-  "tool": "lighthouse 13.5.0 (npx), mobile form factor, default simulated slow-4G/4x CPU throttling, headless Chrome 154, page served from local gzip static server (dist/)",
+  "tool": "lighthouse 13.5.0 mobile, default simulated throttling, headless Chrome 154, local gzip static server",
   "runs": [
     {
       "run": 1,
       "lcp_ms": 674,
+      "cls": 0,
       "fcp_ms": 674,
       "tbt_ms": 0,
-      "cls": 0,
-      "performance": 100,
-      "accessibility": 100,
-      "best_practices": 100,
-      "seo": 100
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "requests": 1,
+      "transfer_bytes": 6692
     },
     {
       "run": 2,
-      "lcp_ms": 669,
-      "fcp_ms": 669,
-      "tbt_ms": 0,
+      "lcp_ms": 670,
       "cls": 0,
-      "performance": 100,
-      "accessibility": 100,
-      "best_practices": 100,
-      "seo": 100
+      "fcp_ms": 670,
+      "tbt_ms": 0,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "requests": 1,
+      "transfer_bytes": 6692
     },
     {
       "run": 3,
-      "lcp_ms": 668,
-      "fcp_ms": 668,
-      "tbt_ms": 0,
+      "lcp_ms": 671,
       "cls": 0,
-      "performance": 100,
-      "accessibility": 100,
-      "best_practices": 100,
-      "seo": 100
+      "fcp_ms": 671,
+      "tbt_ms": 0,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "requests": 1,
+      "transfer_bytes": 6692
     },
     {
       "run": 4,
-      "lcp_ms": 666,
-      "fcp_ms": 666,
+      "lcp_ms": 682,
+      "cls": 0,
+      "fcp_ms": 682,
       "tbt_ms": 0,
-      "cls": 0.029,
-      "performance": 100,
-      "accessibility": 100,
-      "best_practices": 100,
-      "seo": 100
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "requests": 1,
+      "transfer_bytes": 6692
     },
     {
       "run": 5,
-      "lcp_ms": 661,
-      "fcp_ms": 661,
+      "lcp_ms": 672,
+      "cls": 0,
+      "fcp_ms": 672,
       "tbt_ms": 0,
-      "cls": 0.029,
-      "performance": 100,
-      "accessibility": 100,
-      "best_practices": 100,
-      "seo": 100
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "requests": 1,
+      "transfer_bytes": 6692
     }
   ],
-  "median_lcp_ms": 668
+  "median_lcp_ms": 672,
+  "median_cls": 0
 }

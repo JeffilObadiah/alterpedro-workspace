@@ -10,9 +10,13 @@
 //   c) any other CSS rule that references an accent token or an accent hex (counted 1 per rule; there should be none)
 //   JS must not add accent: no accent class names or hex in built scripts.
 import { readdirSync, readFileSync, statSync } from 'node:fs';
-import { join, extname } from 'node:path';
+import { join, extname, resolve } from 'node:path';
+import { bookingProblem } from './booking.mjs';
 
-const dist = new URL('../dist/', import.meta.url).pathname;
+// DIST_DIR / RESEARCH_FILE overrides exist so tests can point the checker at fixture output.
+const dist = (process.env.DIST_DIR ? resolve(process.env.DIST_DIR) : new URL('../dist/', import.meta.url).pathname).replace(/\/?$/, '/');
+const researchFile = process.env.RESEARCH_FILE || new URL('../tests/fixtures/research.md', import.meta.url).pathname;
+const chipFile = process.env.CHIPS_FILE || new URL('../src/data/chips.json', import.meta.url).pathname;
 const errors = [];
 const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
 const files = walk(dist);
@@ -27,8 +31,32 @@ if (process.env.PRODUCTION === '1') {
     if (readFileSync(f, 'utf8').includes('[PRICE]')) errors.push(`PRODUCTION=1 and "[PRICE]" still present in ${f.replace(dist, 'dist/')}`);
   }
 }
-if (process.env.PRODUCTION === '1' && html.some((f) => /href="#book"/.test(readFileSync(f, 'utf8')))) {
-  console.warn('check-build: WARNING PRODUCTION=1 but the booking link is still the "#book" placeholder (set BOOKING_URL).');
+// ---- booking link: under PRODUCTION=1 it must be a public cal.com link (FAILS the build; dev builds unaffected) ----
+if (process.env.PRODUCTION === '1') {
+  const problem = bookingProblem(process.env.BOOKING_URL);
+  if (problem) errors.push(`PRODUCTION=1 and ${problem}`);
+  for (const f of html) {
+    const src = readFileSync(f, 'utf8');
+    if (/href="#book"/.test(src)) errors.push(`PRODUCTION=1 and href="#book" placeholder still in ${f.replace(dist, 'dist/')}`);
+    const expected = process.env.BOOKING_URL;
+    if (expected && !problem && !src.includes(`href="${expected}"`)) errors.push(`PRODUCTION=1 and the built page does not link to BOOKING_URL in ${f.replace(dist, 'dist/')}`);
+  }
+}
+
+// ---- example chips: 6 to 8, every phrase an exact string from the research file, none wine ----
+{
+  const chips = JSON.parse(readFileSync(chipFile, 'utf8')).chips.map((c) => c.text);
+  const research = readFileSync(researchFile, 'utf8');
+  const decode = (t) => t.replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  const page0 = readFileSync(join(dist, 'index.html'), 'utf8');
+  const built = [...page0.matchAll(/<button\b[^>]*\bdata-chip="([^"]*)"[^>]*>([^<]*)<\/button>/g)].map((m) => [decode(m[1]), decode(m[2]), m[0]]);
+  if (built.length < 6 || built.length > 8) errors.push(`expected 6 to 8 example chips in the built page, found ${built.length}`);
+  for (const [fill, label, tag] of built) {
+    if (!research.includes(fill)) errors.push(`chip phrase not found verbatim in the research file: "${fill}"`);
+    if (!chips.includes(fill)) errors.push(`chip phrase not in src/data/chips.json: "${fill}"`);
+    if (label !== fill) errors.push(`chip label differs from the text it fills in: "${label}" vs "${fill}"`);
+    if (/\baccent\b/.test(tag)) errors.push(`chip uses the accent class: "${fill}"`);
+  }
 }
 
 // ---- gather CSS (linked files + inline <style>) ----

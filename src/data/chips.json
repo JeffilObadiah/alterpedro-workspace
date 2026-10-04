@@ -1,0 +1,12 @@
+{
+  "_note": "Example chips for the hero. Every text is an EXACT string from ALTERPEDRO_RESEARCH.md section 3 (Google autocomplete or forum wording). Do not edit, shorten or invent: tests/chips.test.ts and scripts/check-build.mjs check each string against tests/fixtures/research.md and the built page.",
+  "chips": [
+    { "text": "systems that don't talk to each other", "from": "autocomplete", "section": "3.1" },
+    { "text": "website traffic but no leads", "from": "autocomplete", "section": "3.2" },
+    { "text": "I keep manually sending weekly reports", "from": "forum", "section": "3.3" },
+    { "text": "where to start with ai", "from": "autocomplete", "section": "3.4" },
+    { "text": "Our inventory is accurate on paper and wrong on the shelf", "from": "forum", "section": "3.7" },
+    { "text": "stock mismatch", "from": "autocomplete", "section": "3.7" },
+    { "text": "failed erp implementation", "from": "autocomplete", "section": "3.8" }
+  ]
+}

@@ -93,3 +93,39 @@ A real defect the gate caught during the build: my first system prompt quoted th
 14. Astro anonymous telemetry was disabled on the box (`astro telemetry disable`) and `WRANGLER_SEND_METRICS=false` was used.
 15. The "I don't know" button, live panel and error box exist in minimal form to prove the island; the full E7 UI (streaming, voice, keyboard/screen-reader testing, Safari/Chrome mobile checks) is not done. Turnstile, spend cap, D1, summary, analytics, RUM (E4 to E10) are not built.
 16. `.dev.vars` (local secret used during the local run) was deleted; `.dev.vars.example` is committed.
+
+---
+
+# Follow-up 1: chips, CLS fix, cal.com booking rule (2026-10-04, IST)
+
+## Chips (7)
+Source: `src/data/chips.json`, exact strings from `ALTERPEDRO_RESEARCH.md` section 3 (copy in `tests/fixtures/research.md`):
+`systems that don't talk to each other` (3.1 autocomplete) | `website traffic but no leads` (3.2 autocomplete) | `I keep manually sending weekly reports` (3.3 forum quote) | `where to start with ai` (3.4 autocomplete) | `Our inventory is accurate on paper and wrong on the shelf` (3.7 forum title) | `stock mismatch` (3.7 autocomplete) | `failed erp implementation` (3.8 autocomplete).
+Not used on purpose: "old software" (research says consumer intent) and the "i have an idea for an app" family (different buyer, and it names a solution).
+- Components v1.1 has no chip/pill, so a chip = ghost button, size sm. Ink, no wine; accent budget still 3 (check-build reports `accent usages = 3`).
+- Works with JS: click fills the textarea with the exact phrase and focuses it (verified in headless Chrome at 4 widths). Without JS: CSS `@media (scripting: none)` collapses them; if scripts are blocked another way (CSP/extension) they are `visibility:hidden` until the island sets `data-ready`. Verified by screenshot with `script-src 'none'`.
+- I added a small visible "Examples:" label and an `aria-label` on the group (rule: example content is labelled Example). OGILVY may reword it. OGILVY's copy was not changed.
+- Assertions: `tests/chips.test.ts` (6 to 8, verbatim in research file, section matches, no duplicates) and `scripts/check-build.mjs` (built page has 6 to 8 chips, each verbatim in the research file and in chips.json, label equals fill text, none uses `accent`).
+
+## CLS: cause and fix
+Cause (reproduced and measured, not guessed): Lighthouse blamed `section#what-you-get` (score 0.0288), i.e. something above it grew when the island script ran. Two defects in my own island, both fixed:
+1. The island created an "I don't know" button with `hidden`, but `.btn { display:inline-flex }` overrides the `hidden` attribute, so the button was visible and wrapped the hero row. Measured: row 55px (no JS) vs 90px (JS), `#what-you-get` top 683px vs 718px. It only counted in Lighthouse runs where the first paint came before the script ran (2 of 5), which is why it was intermittent. Fix: global `[hidden]{display:none!important}`, and the button now lives in the reserved stage.
+2. Found while testing interaction: swapping the Start label to "Send" widened the button by 3px (91 to 94px), which made the row wrap again at 412px wide (+35px shift on the first answer). Fix: the label stays "Start".
+Also: the done state used to hide the textarea/label/button (shrinking the hero); it now disables them. The question log is a fixed 11rem scroll area and the stage is a fixed `34rem` (measured natural content 506px after 7 turns, stage 544px) so nothing moves as answers arrive.
+
+Interaction check (puppeteer, wrangler dev, chip click + 7 turns, at 360, 412, 768, 1280 px wide): `#what-you-get` top unchanged at every width; layout-shift entries: none at any width. (Before the fixes the same script recorded 0.029, 0.028, 0.0023+0.0153 and 0.0026.)
+
+## Lighthouse mobile, 5 runs after the fixes (lighthouse 13.5.0, default mobile throttling, local gzip server)
+| Run | LCP ms | CLS | TBT ms | Perf/A11y/BP/SEO |
+|---|---|---|---|---|
+| 1 | 674 | 0 | 0 | 100/100/100/100 |
+| 2 | 670 | 0 | 0 | 100/100/100/100 |
+| 3 | 671 | 0 | 0 | 100/100/100/100 |
+| 4 | 682 | 0 | 0 | 100/100/100/100 |
+| 5 | 672 | 0 | 0 | 100/100/100/100 |
+**Median LCP 672 ms (was 668). Median CLS 0 (all five runs 0).** Page: 1 request, 19,800 B HTML (6,376 B gzip); JS: one inline script, 2,283 B raw (1,059 B gzip). Same caveats as before (localhost, system fonts, lab only). Lighthouse does not interact with the page, so the interaction result above is from puppeteer.
+
+## Booking link rule
+- Under `PRODUCTION=1` the build now FAILS (not warns) when the link is `#book`, `BOOKING_URL` is unset/empty, or it does not start with `https://cal.com/` or `https://app.cal.com/` with a path after (`scripts/booking.mjs`). Enforced at Astro render and again on the built output (built page must link to exactly `BOOKING_URL`). Non-production builds unaffected.
+- Checked by hand: `PRODUCTION=1 SPRINT_PRICE=x npm run build` -> `Error: PRODUCTION=1 but BOOKING_URL is not set`, exit 1. Automated: `tests/check-build.test.ts` (unset, `#book`, calendly, http://, host look-alikes `cal.com.evil.example`, empty path, quotes/spaces; passes for cal.com and app.cal.com; dev build with `#book` passes; `[PRICE]` and chip failures too).
+- `npm test` now: 5 files, 89 tests passed.
