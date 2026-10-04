@@ -1,0 +1,39 @@
+---
+// Hero form = a real <form>. Works with JS disabled (plain POST to /api/scan/turn, answered with an HTML page).
+// src/scripts/scan.js progressively enhances it into the in-page Scan. This <alter-scan> element is the only JS on the page.
+interface Props { headline: string; bookHref: string }
+const { headline, bookHref } = Astro.props;
+---
+<alter-scan>
+  <p class="eyebrow">ALTER PEDRO · THE SOLUTION COMPANY</p>
+  <h1>{headline}</h1>
+  <p class="secondary lede">No email needed. You get a written summary at the end.</p>
+
+  <form id="scan-form" method="post" action="/api/scan/turn" data-scan-form>
+    <label class="field-label" for="answer">Your problem, in your own words</label>
+    <textarea id="answer" name="answer" rows="4" maxlength="1500" required autocomplete="off" placeholder="Our sales team spends Fridays building reports."></textarea>
+    <div class="row">
+      <button type="submit" class="btn btn-primary" data-start>Start</button>
+      <a class="accent small" href={bookHref}>Rather talk to a person? Book 20 minutes.</a>
+    </div>
+  </form>
+
+  <!-- Enhanced-state regions: hidden until the island script runs. -->
+  <div class="scan-log" data-log aria-live="polite" hidden></div>
+  <div class="card scan-panel" data-panel hidden>
+    <p><span class="marker accent" aria-hidden="true"></span><strong>We're building a picture of:</strong></p>
+    <ul data-areas>
+      <li data-area="situation">your situation</li>
+      <li data-area="cost">your cost</li>
+      <li data-area="history">your history</li>
+      <li data-area="constraint">your constraints</li>
+      <li data-area="vision">what you want</li>
+      <li data-area="stake">what is at stake</li>
+      <li data-area="urgency">how urgent it is</li>
+    </ul>
+  </div>
+</alter-scan>
+
+<script>
+  import '../scripts/scan.js';
+</script>

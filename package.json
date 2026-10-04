@@ -1,0 +1,23 @@
+{
+  "name": "alterpedro",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "tokens": "node scripts/gen-tokens.mjs",
+    "build": "node scripts/gen-tokens.mjs && astro build && node scripts/check-build.mjs",
+    "test": "vitest run",
+    "gate": "vitest run tests/gate.test.ts",
+    "preview": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "astro": "^7.3.5",
+    "vitest": "^5.0.3",
+    "wrangler": "^4.147.0"
+  }
+}

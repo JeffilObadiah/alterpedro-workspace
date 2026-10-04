@@ -1,0 +1,124 @@
+---
+import '../styles/tokens.css';
+import '../styles/page.css';
+import Scan from '../components/Scan.astro';
+
+// ---- Build-time switches -------------------------------------------------------------------
+// HERO_VARIANT=A (default) or B selects the headline test (creative direction section 2).
+const HEADLINES = {
+  A: 'Describe the problem. Get it back in writing, in 3 minutes.',
+  B: "You bring the problem. We'll tell you what it actually is.",
+};
+const variant = (process.env.HERO_VARIANT ?? 'A').toUpperCase();
+if (!(variant in HEADLINES)) throw new Error(`HERO_VARIANT must be A or B, got "${variant}"`);
+const headline = HEADLINES[variant as 'A' | 'B'];
+
+// Sprint price: placeholder until the human supplies it. Build FAILS if it is still a placeholder when PRODUCTION=1.
+const price = process.env.SPRINT_PRICE ?? '[PRICE]';
+if (process.env.PRODUCTION === '1' && price.includes('[PRICE]')) {
+  throw new Error('PRODUCTION=1 but the Sprint price is still the "[PRICE]" placeholder. Set SPRINT_PRICE.');
+}
+// Booking link: hosted scheduler URL not chosen yet (architecture E-A4). Placeholder #book.
+const bookHref = process.env.BOOKING_URL ?? '#book';
+
+// Proof: real case studies only. Empty = the whole block is omitted from the page. Never add invented ones.
+const cases: { problem: string; discovered: string; decided: string; built: string; changed: string }[] = [];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alter Pedro · Describe the problem, get it back in writing</title>
+    <meta name="description" content="Describe your problem in your own words and get a written read on what it actually is. No email needed." />
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <main>
+      <!-- 1. Hero = the Scan input -->
+      <section id="scan" aria-label="Start the Scan">
+        <Scan headline={headline} bookHref={bookHref} />
+      </section>
+
+      <!-- 2. What you get back: a clearly labelled example, not a customer -->
+      <section id="what-you-get">
+        <h2>What you get back</h2>
+        <article class="card" aria-label="Example summary">
+          <span class="tag">Example</span>
+          <p class="secondary small">An illustration of the format. Not a real customer, not a real result.</p>
+          <div class="example-part">
+            <h3>1. What we heard</h3>
+            <p class="secondary">Your sales team spends Friday afternoons copying numbers from three spreadsheets into one report. You think an app would fix it.</p>
+          </div>
+          <div class="example-part">
+            <h3>2. What seems to be the real problem</h3>
+            <p class="secondary">You said: we need an app. The underlying problem looks different: the same numbers are typed in more than once, so the report takes a long time and nobody fully trusts it.</p>
+          </div>
+          <div class="example-part">
+            <h3>3. What we'd want to investigate next</h3>
+            <p class="secondary">This looks like a workflow and data problem. We'd look at where the numbers first appear, who reads the report and what they decide from it, and whether one of the three spreadsheets could be the single source. We haven't decided what you should build yet.</p>
+          </div>
+          <div class="example-part">
+            <h3>4. What we'd still need to know</h3>
+            <p class="secondary">How many people touch the report. What happens when the numbers disagree. Whether anything else depends on those spreadsheets.</p>
+          </div>
+          <div class="example-part">
+            <h3>5. Next step</h3>
+            <ul class="secondary">
+              <li><strong>Door 1:</strong> a 20-minute call. Free.</li>
+              <li><strong>Door 2:</strong> a Solution Sprint. Half a day, led by a person, {price}, credited in full against the project if you go ahead.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- 3. Stated problem versus real problem (labelled examples) -->
+      <section id="stated-vs-real">
+        <h2>What people ask for, and what it turns out to be</h2>
+        <div class="cards">
+          <article class="card"><span class="tag">Example</span><p class="secondary small">"We need an app."</p><p><strong>The real problem was a Friday spreadsheet.</strong></p></article>
+          <article class="card"><span class="tag">Example</span><p class="secondary small">"Our systems don't talk to each other."</p><p><strong>The real problem was the same figures typed in three places.</strong></p></article>
+          <article class="card"><span class="tag">Example</span><p class="secondary small">"Our website isn't converting."</p><p><strong>The real problem was that nobody could tell what to do next.</strong></p></article>
+        </div>
+        <p class="secondary small">These are illustrations, not real clients. They stay labelled as examples until real cases replace them.</p>
+      </section>
+
+      <!-- 4. Method -->
+      <section id="method">
+        <h2>How we work</h2>
+        <dl>
+          <dt>Diagnose</dt><dd>We find the real problem before anything is built.</dd>
+          <dt>Design</dt><dd>We decide what to build, and what not to build.</dd>
+          <dt>Build</dt><dd>We build it in steps you can check.</dd>
+          <dt>Operate</dt><dd>We keep it running with you after launch.</dd>
+        </dl>
+      </section>
+
+      <!-- 5. Proof: omitted entirely until at least one REAL case exists -->
+      {cases.length > 0 && (
+        <section id="proof">
+          <h2>Proof</h2>
+          {cases.map((c) => (
+            <article class="card">
+              <h3>{c.problem}</h3>
+              <dl>
+                <dt>What we discovered</dt><dd>{c.discovered}</dd>
+                <dt>What we decided</dt><dd>{c.decided}</dd>
+                <dt>What we built</dt><dd>{c.built}</dd>
+                <dt>What changed</dt><dd>{c.changed}</dd>
+              </dl>
+            </article>
+          ))}
+        </section>
+      )}
+
+      <!-- 6. Final CTA + Labs line -->
+      <section id="final-cta">
+        <h2>Have a problem worth solving? Tell us.</h2>
+        <p><a class="btn btn-ghost" href="#scan">Start the Scan</a></p>
+        <p class="secondary">Some problems are bigger than one client. So we build the solution ourselves. <a href="#labs">See Alter Labs.</a></p>
+      </section>
+    </main>
+    <footer>ALTER Software Technologies Private Limited</footer>
+  </body>
+</html>

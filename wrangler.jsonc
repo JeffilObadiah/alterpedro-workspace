@@ -1,0 +1,22 @@
+{
+  // Static assets (Astro output in ./dist) + ONE Worker route: /api/scan/turn.
+  // run_worker_first limits Worker invocations to /api/* ; everything else is served as a static asset.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "alterpedro",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-09-01",
+  "build": { "command": "npm run build" },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    // "mock" = deterministic offline provider (default). "real" = stub, unimplemented until E4.
+    "MODEL_PROVIDER": "mock"
+  }
+  // Secrets (never put in this file): set with `npx wrangler secret put SCAN_HMAC_SECRET`
+  // (and, at E4, MODEL_API_KEY and MODEL_ENDPOINT). For local dev copy .dev.vars.example to .dev.vars.
+}

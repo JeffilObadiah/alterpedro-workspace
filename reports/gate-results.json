@@ -1,0 +1,28 @@
+{
+  "provider": "mock",
+  "schemaValid": "20/20",
+  "hostile": "10/10",
+  "echoClarity": "NOT SCORED (needs real model + rubric)",
+  "exchanges": [
+    7,
+    7,
+    7,
+    8,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    8,
+    7,
+    8,
+    7,
+    8
+  ]
+}
