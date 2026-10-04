@@ -1,5 +1,5 @@
 // Problem Model schema v1 + HMAC signing + strict validation. (ARCHITECTURE 3.2, 3.1, 3.5)
-import { PROMPT_CANARY, SYSTEM_PROMPT } from './prompt';
+import { PROMPT_CANARY, SYSTEM_PROMPT_SINGLE_DOOR, SYSTEM_PROMPT_TWO_DOORS } from './prompt';
 
 export const AREAS = ['situation', 'cost', 'history', 'constraint', 'vision', 'stake', 'urgency'] as const;
 export type Area = (typeof AREAS)[number];
@@ -94,22 +94,32 @@ export function leaksPrompt(text: string): boolean {
   const w = words(text);
   if (w.length < 8) return false;
   const shingles = new Set<string>();
-  const p = words(SYSTEM_PROMPT);
-  for (let i = 0; i + 8 <= p.length; i++) shingles.add(p.slice(i, i + 8).join(' '));
+  for (const text of [SYSTEM_PROMPT_SINGLE_DOOR, SYSTEM_PROMPT_TWO_DOORS]) {
+    const p = words(text);
+    for (let i = 0; i + 8 <= p.length; i++) shingles.add(p.slice(i, i + 8).join(' '));
+  }
   for (let i = 0; i + 8 <= w.length; i++) if (shingles.has(w.slice(i, i + 8).join(' '))) return true;
   return false;
 }
 
-function cleanText(v: unknown, max: number): string | null {
-  if (typeof v !== 'string') return null;
-  if (BAD_CHARS.test(v.replace(/[\t\n\r]/g, ' '))) return null;
-  const t = v.replace(/\s+/g, ' ').trim();
-  if (t.length > max || URLISH.test(t) || PRESCRIPTION.test(t) || leaksPrompt(t)) return null;
-  return t;
+// DEC-005: while the paid option is hidden the engine must never offer it. (Only these tokens are filtered in model output;
+// ordinary words like "price" or "credit" can legitimately appear when a visitor talks about their own business.)
+const OFFER_WHEN_SINGLE_DOOR = /\bsprints?\b|\bdoor\s*[12]\b|\[price\]/i;
+
+function makeCleanText(sprintEnabled: boolean) {
+  return function cleanText(v: unknown, max: number): string | null {
+    if (typeof v !== 'string') return null;
+    if (BAD_CHARS.test(v.replace(/[\t\n\r]/g, ' '))) return null;
+    const t = v.replace(/\s+/g, ' ').trim();
+    if (t.length > max || URLISH.test(t) || PRESCRIPTION.test(t) || leaksPrompt(t)) return null;
+    if (!sprintEnabled && OFFER_WHEN_SINGLE_DOOR.test(t)) return null;
+    return t;
+  };
 }
 
 /** Parse + strictly validate raw model text. Returns null on ANY problem (caller then shows the fixed fallback). */
-export function parseModelOutput(raw: unknown): ModelOutput | null {
+export function parseModelOutput(raw: unknown, sprintEnabled = false): ModelOutput | null {
+  const cleanText = makeCleanText(sprintEnabled);
   if (typeof raw !== 'string' || raw.length > 8000) return null;
   let j: unknown;
   try { j = JSON.parse(raw); } catch { return null; }

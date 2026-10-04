@@ -1,7 +1,8 @@
 // Cloudflare Worker: POST /api/scan/turn (ARCHITECTURE section 3). Everything else is static assets.
 // Stateless turns: the browser holds the signed Problem Model. No database read on the hot path.
 import { callModel, providerFromEnv, type Message, type ProviderEnv } from './model';
-import { SYSTEM_PROMPT } from './prompt';
+import { getSystemPrompt } from './prompt';
+import siteConfig from './site-config.json';
 import {
   FALLBACK_ECHO, FALLBACK_QUESTION, MAX_ANSWER_CHARS, MAX_TURNS,
   applyUpdate, blankModel, parseModelOutput, signModel, validateModel, verifyModel, type ProblemModel,
@@ -9,7 +10,14 @@ import {
 
 export interface Env extends ProviderEnv {
   SCAN_HMAC_SECRET?: string;
+  /** Test/local override. Normally the switch comes from src/site-config.json (generated at build from SPRINT_PRICE). */
+  SPRINT_PRICE?: string;
   ASSETS?: { fetch(request: Request): Promise<Response> };
+}
+
+/** Single door (DEC-005): the paid option exists only when SPRINT_PRICE was set at build time. */
+export function sprintEnabled(env: Env): boolean {
+  return env.SPRINT_PRICE !== undefined ? env.SPRINT_PRICE.trim() !== '' : siteConfig.sprintEnabled === true;
 }
 
 const MAX_BODY_BYTES = 32 * 1024;
@@ -26,12 +34,12 @@ const json = (body: unknown, status = 200) =>
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string);
 
 /** Visitor text goes in as a JSON data field inside delimiters; it is never concatenated into the instructions. */
-export function buildMessages(model: ProblemModel, answer: string, turn: number, dontKnow: boolean): Message[] {
+export function buildMessages(model: ProblemModel, answer: string, turn: number, dontKnow: boolean, twoDoors = false): Message[] {
   const { sig: _sig, ...state } = model;
   const data = JSON.stringify({ schema: 'scan.v1', turn, max_turns: MAX_TURNS, dont_know: dontKnow, answer, model: state })
     .replace(/</g, '\\u003c').replace(/>/g, '\\u003e'); // the visitor cannot close the delimiter
   return [
-    { role: 'system', content: SYSTEM_PROMPT },
+    { role: 'system', content: getSystemPrompt(twoDoors) },
     { role: 'user', content: `<visitor_data>\n${data}\n</visitor_data>` },
   ];
 }
@@ -107,8 +115,8 @@ export async function handleTurn(request: Request, env: Env): Promise<Response> 
   let out = null as ReturnType<typeof parseModelOutput>;
   let code = 'ok';
   try {
-    const raw = await callModel(providerFromEnv(env), buildMessages(model, answer, turn, dontKnow));
-    out = parseModelOutput(raw);
+    const raw = await callModel(providerFromEnv(env), buildMessages(model, answer, turn, dontKnow, sprintEnabled(env)));
+    out = parseModelOutput(raw, sprintEnabled(env));
     if (!out) code = 'fallback_invalid_output';
   } catch {
     code = 'fallback_provider_error';

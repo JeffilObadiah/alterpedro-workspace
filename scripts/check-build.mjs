@@ -12,6 +12,7 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, extname, resolve } from 'node:path';
 import { bookingProblem } from './booking.mjs';
+import { bannedHits } from './banned-words.mjs';
 
 // DIST_DIR / RESEARCH_FILE overrides exist so tests can point the checker at fixture output.
 const dist = (process.env.DIST_DIR ? resolve(process.env.DIST_DIR) : new URL('../dist/', import.meta.url).pathname).replace(/\/?$/, '/');
@@ -25,12 +26,25 @@ const css = files.filter((f) => extname(f) === '.css');
 const js = files.filter((f) => extname(f) === '.js');
 if (!html.length) { console.error('check-build: no HTML in dist'); process.exit(1); }
 
-// ---- [PRICE] ----
+// ---- [PRICE] placeholder: never allowed in a production build ----
 if (process.env.PRODUCTION === '1') {
   for (const f of files.filter((f) => /\.(html|js|css|txt|xml|json)$/.test(f))) {
     if (readFileSync(f, 'utf8').includes('[PRICE]')) errors.push(`PRODUCTION=1 and "[PRICE]" still present in ${f.replace(dist, 'dist/')}`);
   }
 }
+
+// ---- DEC-005 single door: with SPRINT_PRICE unset, Door 2 must not exist anywhere in the output ----
+const twoDoors = (process.env.SPRINT_PRICE ?? '').trim() !== '';
+if (!twoDoors) {
+  for (const f of files.filter((f) => /\.(html|js|css|txt|xml|json|svg|webmanifest)$/.test(f))) {
+    for (const hit of bannedHits(readFileSync(f, 'utf8'), f.replace(dist, 'dist/'))) errors.push(`single door: banned word while SPRINT_PRICE is unset: ${hit}`);
+  }
+} else {
+  const pg = readFileSync(join(dist, 'index.html'), 'utf8');
+  if (!/Door 2/.test(pg) || !pg.includes(process.env.SPRINT_PRICE.trim())) errors.push('SPRINT_PRICE is set but the two-door example (Door 2 with the price) is missing from the page');
+}
+console.log(`check-build: mode = ${twoDoors ? 'two doors (SPRINT_PRICE set)' : 'single door (SPRINT_PRICE unset)'}`);
+
 // ---- booking link: under PRODUCTION=1 it must be a public cal.com link (FAILS the build; dev builds unaffected) ----
 if (process.env.PRODUCTION === '1') {
   const problem = bookingProblem(process.env.BOOKING_URL);

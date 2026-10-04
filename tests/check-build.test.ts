@@ -41,7 +41,7 @@ describe('bookingProblem()', () => {
 });
 
 describe('check-build: booking link under PRODUCTION=1', () => {
-  const price = { SPRINT_PRICE: 'INR 1' };
+  const price = {}; // single-door mode (SPRINT_PRICE unset) -- the "[PRICE]" test below sets its own env
   it('FAILS when BOOKING_URL is unset', () => {
     const r = run(fixture({ href: '#book' }), { PRODUCTION: '1', ...price });
     expect(r.code).toBe(1);

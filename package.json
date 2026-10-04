@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "astro dev",
     "tokens": "node scripts/gen-tokens.mjs",
-    "build": "node scripts/gen-tokens.mjs && astro build && node scripts/check-build.mjs",
+    "build": "node scripts/gen-tokens.mjs && node scripts/gen-site-config.mjs && astro build && node scripts/check-build.mjs",
     "test": "vitest run",
     "gate": "vitest run tests/gate.test.ts",
     "preview": "wrangler dev",

@@ -199,3 +199,97 @@ $ PRODUCTION=1 npx wrangler deploy --dry-run        (via wrangler's build.comman
 $ PRODUCTION=1 SPRINT_PRICE=TEST-ONLY npx wrangler deploy --dry-run
 -> check-build: OK ; Total Upload: 23.06 KiB / gzip: 8.29 KiB ; --dry-run: exiting now.
 ```
+
+## DEC-005: single door at launch (SPRINT_PRICE switch)
+
+Source of wording: `ALTERPEDRO_SINGLE_DOOR_COPY.md` (OGILVY). The old "`[PRICE]` blocks a production build" guard is replaced by a `SPRINT_PRICE` switch. Earlier sections of this report that mention the `[PRICE]` guard (including the Follow-up 2 captures) describe the previous behaviour and are superseded by this section.
+
+- **`SPRINT_PRICE` unset/empty (launch):** Door 2 renders nowhere. Page block 2 example part 5 is `5. Next step: A free 20-minute call. We go through the summary with you and tell you honestly whether we can help, and how.` (no "Door 1" label). The engine's closing step is the free 20-minute call only; the end summary shows the button "Book 20 minutes" linking to `BOOKING_URL`. The model prompt (`SYSTEM_PROMPT_SINGLE_DOOR`) never mentions a Sprint, and `parseModelOutput` rejects any model output that mentions a Sprint, a door or `[PRICE]` (the fixed fallback question is used instead). The production build FAILS if any banned word appears in any text file of the built output: Solution Sprint, Sprint, credited, credit, price, pricing, [PRICE], Door 1, Door 2 (`scripts/banned-words.mjs`, case-insensitive substring, deliberately stricter than whole-word).
+- **`SPRINT_PRICE` set:** two-door version as before (Door 1 free call, Door 2 Solution Sprint with the price and "credited in full" line), `SYSTEM_PROMPT_TWO_DOORS` (never states an amount). `check-build` then requires "Door 2" and the price in the page.
+- **`PRODUCTION=1`** still fails on a missing / non-cal.com `BOOKING_URL`. `SPRINT_PRICE` equal to the literal `[PRICE]` under `PRODUCTION=1` also fails.
+- Mechanism: `scripts/gen-site-config.mjs` writes `src/site-config.json {sprintEnabled}` at build time; the Worker reads it (a Worker `SPRINT_PRICE` var overrides it). `wrangler.jsonc` `build.command` runs the same npm build, so `PRODUCTION=1 npm run deploy` now needs no price.
+- Door 2 price used in the two-door capture below is the dummy `INR 99,000 (test value)`; it is not a real price and must never be deployed. The real price is not supplied.
+
+### Tests (both modes)
+
+`npm test`: 7 files, **131 tests, all pass** (new: `tests/single-door.test.ts`; updated: `tests/check-build.test.ts`). They cover: the banned list and matcher; single-door prompt has no Sprint/price/credit/door wording and ends with the free call only; two-door prompt offers the Sprint without stating an amount; the Worker sends the single-door prompt when `SPRINT_PRICE` is unset and the two-door one when set (and the env override); the output filter rejects Sprint/door/[PRICE] mentions in single-door mode and allows them in two-door mode; `check-build` fixture dirs for both modes (unset + clean passes, unset + each banned word fails, set without Door 2/price fails, set with them passes, production booking rules in both); and two real `astro build` runs (unset and set) into temp dirs.
+
+### Captured build outputs (real runs, 2026-10-04 ~15:57 IST)
+
+```
+=== 1. single door, production (launch config): PRODUCTION=1, cal.com link, SPRINT_PRICE unset ===
+$ PRODUCTION=1 BOOKING_URL=https://cal.com/alter-pedro-discovery npm run build
+15:57:13 [build] Complete!
+check-build: OK
+check-build: accent usages = 3 (html 2: <a class="accent small"> in index.html, <span class="marker accent"> in index.html; css 1: focus ring (:focus-visible)); max 3
+check-build: mode = single door (SPRINT_PRICE unset)
+site-config: sprintEnabled=false (single door)
+[exit 0]
+
+--- built page, part 5 and banned-word grep (expect no matches) ---
+<h3>5. Next step</h3><p class="secondary">A free 20-minute call. We go through the summary with you and tell you honestly whether we can help, and how.</p>
+banned-word matches in dist: 0
+
+=== 2. two doors: PRODUCTION=1, cal.com link, SPRINT_PRICE set (dummy test value, not a real price) ===
+$ PRODUCTION=1 BOOKING_URL=https://cal.com/alter-pedro-discovery SPRINT_PRICE='INR 99,000 (test value)' npm run build
+15:57:14 [build] Complete!
+check-build: OK
+check-build: accent usages = 3 (html 2: <a class="accent small"> in index.html, <span class="marker accent"> in index.html; css 1: focus ring (:focus-visible)); max 3
+check-build: mode = two doors (SPRINT_PRICE set)
+site-config: sprintEnabled=true (two doors)
+[exit 0]
+
+<h3>5. Next step</h3><ul class="secondary"><li><strong>Door 1:</strong> a 20-minute call. Free.</li><li><strong>Door 2:</strong> a Solution Sprint. Half a day, led by a person, INR 99,000 (test value), credited in full against the project if you go ahead.</li></ul>
+
+=== 3. banned word injected into the single-door output must FAIL the production build ===
+$ PRODUCTION=1 BOOKING_URL=https://cal.com/alter-pedro-discovery node scripts/check-build.mjs   (dist hand-edited to contain 'Sprint')
+check-build: mode = single door (SPRINT_PRICE unset)
+check-build FAILED:
+ - single door: banned word while SPRINT_PRICE is unset: dist/index.html: "Sprint" in …A free 20-minute call, then a Sprint. We go through the summary wi…
+ - PRODUCTION=1 and href="#book" placeholder still in dist/index.html
+ - PRODUCTION=1 and the built page does not link to BOOKING_URL in dist/index.html
+[exit 1]
+
+=== 4. PRODUCTION=1 still fails on missing / non-cal.com BOOKING_URL (single door) ===
+$ env -u BOOKING_URL PRODUCTION=1 npm run build
+Error: PRODUCTION=1 but BOOKING_URL is not set. Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.
+PRODUCTION=1 but BOOKING_URL is not set. Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.
+site-config: sprintEnabled=false (single door)
+[exit 1]
+
+$ PRODUCTION=1 BOOKING_URL=https://calendly.com/alter-pedro-discovery npm run build
+Error: PRODUCTION=1 but BOOKING_URL must start with https://cal.com/ or https://app.cal.com/ (got "https://calendly.com/alter-pedro-discovery"). Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.
+PRODUCTION=1 but BOOKING_URL must start with https://cal.com/ or https://app.cal.com/ (got "https://calendly.com/alter-pedro-discovery"). Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.
+site-config: sprintEnabled=false (single door)
+[exit 1]
+
+=== 5. SPRINT_PRICE='[PRICE]' literal in production ===
+$ PRODUCTION=1 BOOKING_URL=https://cal.com/alter-pedro-discovery SPRINT_PRICE='[PRICE]' npm run build
+Error: PRODUCTION=1 but SPRINT_PRICE still contains the "[PRICE]" placeholder. Set a real price or leave SPRINT_PRICE unset for the single-door launch.
+PRODUCTION=1 but SPRINT_PRICE still contains the "[PRICE]" placeholder. Set a real price or leave SPRINT_PRICE unset for the single-door launch.
+site-config: sprintEnabled=true (two doors)
+[exit 1]
+
+=== 6. dev build restored ===
+$ npm run build
+15:57:20 [build] Complete!
+check-build: OK
+check-build: accent usages = 3 (html 2: <a class="accent small"> in index.html, <span class="marker accent"> in index.html; css 1: focus ring (:focus-visible)); max 3
+check-build: mode = single door (SPRINT_PRICE unset)
+site-config: sprintEnabled=false (single door)
+[exit 0]
+
+
+$ PRODUCTION=1 npx wrangler deploy --dry-run   (no price; NOT a deploy)
+[custom build] > node scripts/gen-tokens.mjs && node scripts/gen-site-config.mjs && astro build && node scripts/check-build.mjs
+[custom build] check-build: mode = single door (SPRINT_PRICE unset)
+[custom build] check-build: accent usages = 3 (html 2: <a class="accent small"> in index.html, <span class="marker accent"> in index.html; css 1: focus ring (:focus-visible)); max 3
+[custom build] check-build: OK
+Total Upload: 24.57 KiB / gzip: 8.80 KiB
+--dry-run: exiting now.
+[exit 0]
+```
+
+Reading the captures: (1) launch config builds, passes check-build in single-door mode, has 0 banned-word matches in `dist`; (2) with a price set, Door 1 and Door 2 render and the build passes; (3) a hand-edited `dist` with "Sprint" makes the check fail (the other two lines are only because that edit step re-used a non-production dist where the booking link is the `#book` placeholder, not a second defect); (4) a missing or non-cal.com booking link still fails the production build; (5) a literal `[PRICE]` fails; the wrangler dry-run (no deploy) now passes with no price.
+
+Not done / assumed (DEC-005): the "Prefer to keep a copy first? Email me this summary." line belongs to the E6 summary screen, which is not built. The live end-summary screen (E6) must render through the same switch when it is built. Banned-word scan covers text outputs in `dist` (html, js, css, json, txt, xml, svg, webmanifest); it does not read images.

@@ -21,10 +21,13 @@ if (process.env.PRODUCTION === '1') {
   if (problem) throw new Error(`PRODUCTION=1 but ${problem}. Set BOOKING_URL to a https://cal.com/ or https://app.cal.com/ link.`);
 }
 
-// Sprint price: placeholder until the human supplies it. Build FAILS if it is still a placeholder when PRODUCTION=1.
-const price = process.env.SPRINT_PRICE ?? '[PRICE]';
-if (process.env.PRODUCTION === '1' && price.includes('[PRICE]')) {
-  throw new Error('PRODUCTION=1 but the Sprint price is still the "[PRICE]" placeholder. Set SPRINT_PRICE.');
+// Single door (DEC-005). SPRINT_PRICE unset or empty = the paid option does not exist anywhere: the example summary has one next step
+// (the free 20-minute call) and no Door 2 / Sprint / price / credit wording. SPRINT_PRICE set = the two-door version renders with the price.
+// scripts/check-build.mjs fails the build if a banned word appears in the output while SPRINT_PRICE is unset.
+const sprintPrice = (process.env.SPRINT_PRICE ?? '').trim();
+const twoDoors = sprintPrice !== '';
+if (process.env.PRODUCTION === '1' && twoDoors && sprintPrice.includes('[PRICE]')) {
+  throw new Error('PRODUCTION=1 but SPRINT_PRICE still contains the "[PRICE]" placeholder. Set a real price or leave SPRINT_PRICE unset for the single-door launch.');
 }
 // Proof: real case studies only. Empty = the whole block is omitted from the page. Never add invented ones.
 const cases: { problem: string; discovered: string; decided: string; built: string; changed: string }[] = [];
@@ -69,10 +72,14 @@ const cases: { problem: string; discovered: string; decided: string; built: stri
           </div>
           <div class="example-part">
             <h3>5. Next step</h3>
-            <ul class="secondary">
-              <li><strong>Door 1:</strong> a 20-minute call. Free.</li>
-              <li><strong>Door 2:</strong> a Solution Sprint. Half a day, led by a person, {price}, credited in full against the project if you go ahead.</li>
-            </ul>
+            {twoDoors ? (
+              <ul class="secondary">
+                <li><strong>Door 1:</strong> a 20-minute call. Free.</li>
+                <li><strong>Door 2:</strong> a Solution Sprint. Half a day, led by a person, {sprintPrice}, credited in full against the project if you go ahead.</li>
+              </ul>
+            ) : (
+              <p class="secondary">A free 20-minute call. We go through the summary with you and tell you honestly whether we can help, and how.</p>
+            )}
           </div>
         </article>
       </section>
