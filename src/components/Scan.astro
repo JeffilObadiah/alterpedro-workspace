@@ -12,6 +12,7 @@ const { headline, bookHref } = Astro.props;
   <form id="scan-form" method="post" action="/api/scan/turn" data-scan-form>
     <label class="field-label" for="answer">Your problem, in your own words</label>
     <textarea id="answer" name="answer" rows="4" maxlength="1500" required autocomplete="off" placeholder="Our sales team spends Fridays building reports."></textarea>
+    <p class="secondary small privacy">Describe the problem, not the people. Please don't enter names, phone numbers or client details.</p>
     <div class="row">
       <button type="submit" class="btn btn-primary" data-start>Start</button>
       <a class="accent small" href={bookHref}>Rather talk to a person? Book 20 minutes.</a>
@@ -24,7 +25,7 @@ const { headline, bookHref } = Astro.props;
     <p><span class="marker accent" aria-hidden="true"></span><strong>We're building a picture of:</strong></p>
     <ul data-areas>
       <li data-area="situation">your situation</li>
-      <li data-area="cost">your cost</li>
+      <li data-area="cost">what it costs you</li>
       <li data-area="history">your history</li>
       <li data-area="constraint">your constraints</li>
       <li data-area="vision">what you want</li>
